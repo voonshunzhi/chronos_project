@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  fasting_blood_glucose: 1.5
+  hg1ac: 1.5
+  meal: 
+  blood_glucose_level: 1.5
+  medication: MyString
+  notes: MyString
+
+two:
+  fasting_blood_glucose: 1.5
+  hg1ac: 1.5
+  meal: 
+  blood_glucose_level: 1.5
+  medication: MyString
+  notes: MyString
