@@ -1,5 +1,9 @@
+<!--This is the index page (The dashboard)-->
 <h1>Thanks for signing up for chronos!</h1>
+
+
 <% if @my_patients%>
+<!--Doctor will see this (their patients etc..)-->
     <% @my_patients.each do |patient|%>
         <%= "Patient : #{patient.id}"%>
         <%= patient.user.name%>
@@ -8,6 +12,7 @@
 <%end%>
 
 <% if @my_doctor%>
+<!--Patient will see this (their doctor etc..)-->
     <%= @my_doctor.user.name %>
     
 <%end%>

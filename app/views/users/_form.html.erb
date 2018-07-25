@@ -28,6 +28,7 @@
     <%= i.text_field :phone %>
 </div>
 <% end %>
+<!--Doctor won't see this verification code when they sign up-->
 <% unless params[:sign_up] == "doctor"%>
   <%= form.fields_for :verification do |v| %>
         <div class="text-field">
