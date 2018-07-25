@@ -6,6 +6,7 @@
 </head>
 <body>
   <div id="header">
+    <%= link_to "Sign Up as Doctor", sign_up_path(sign_up:"doctor")%>
     <% if signed_in? -%>
       <%= button_to t(".sign_out"), sign_out_path, method: :delete %>
     <% else -%>

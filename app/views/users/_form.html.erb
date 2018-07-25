@@ -1,9 +1,42 @@
-<div class="text-field">
-  <%= form.label :email %>
-  <%= form.text_field :email, type: 'email' %>
+<%= form.fields_for :info do |i| %>
+  <div class="text-field">
+    <%= i.label :email %>
+    <%= i.text_field :email, type: 'email',autofocus:true %>
+  </div>
+  <div class="password-field">
+    <%= i.label :password %>
+    <%= i.password_field :password %>
+  </div>
+  <div class="text-field">
+    <%= i.label :name %>
+    <%= i.text_field :name%>
+  </div>
+  <div class="text-field">
+    <%= i.label :age %>
+    <%= i.text_field :age %>
+  </div>
+  <div class="text-field">
+    <%= i.label "IC Number" %>
+    <%= i.text_field :ic %>
+  </div>
+  <div class="text-field">
+    <%= i.label :gender %>
+    <%= i.text_field :gender  %>
+  </div>
+  <div class="text-field">
+    <%= i.label :phone %>
+    <%= i.text_field :phone %>
 </div>
+<% end %>
+<% unless params[:sign_up] == "doctor"%>
+  <%= form.fields_for :verification do |v| %>
+        <div class="text-field">
+          <%= v.label "Verification Code" %>
+          <%= v.text_field :vcode%>
+        </div>
+<% end %>
+<% end %>
 
-<div class="password-field">
-  <%= form.label :password %>
-  <%= form.password_field :password %>
-</div>
+
+
+

@@ -85,7 +85,7 @@ ActiveRecord::Schema.define(version: 2018_07_25_034024) do
     t.string "gender"
     t.string "phone"
     t.string "email"
-    t.integer "role"
+    t.integer "role", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "encrypted_password", limit: 128

@@ -3,4 +3,12 @@ class HealthRecord < ApplicationRecord
 	has_many :obeses
 	has_many :diabetes
 	belongs_to :patient
+	
+	
+	
+	
+	
+	
+	
+	
 end

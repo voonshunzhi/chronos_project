@@ -1,0 +1,13 @@
+<h1>Thanks for signing up for chronos!</h1>
+<% if @my_patients%>
+    <% @my_patients.each do |patient|%>
+        <%= "Patient : #{patient.id}"%>
+        <%= patient.user.name%>
+        <%= patient.user.ic%>
+    <% end %>
+<%end%>
+
+<% if @my_doctor%>
+    <%= @my_doctor.user.name %>
+    
+<%end%>
