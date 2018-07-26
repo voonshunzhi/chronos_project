@@ -1,6 +1,6 @@
 #User controller control user signup
 class UsersController < Clearance::UsersController
-  before_action :is_doctor?,only: [:create]
+  before_action :is_doctor?, only: [:create]
   
   def new
     @user = User.new

@@ -1,15 +1,25 @@
-<div id="clearance" class="sign-up">
-  <h2><%= t(".title") %></h2>
+<div id="clearance" class="d-block"> 
+  <div class="d-flex justify-content-center">
+    <div class="card p-5 col-md-6 col-lg-4 col-12 animated fadeIn">
+      <h2><%= t(".title") %></h2>
+      <br>
+      <% if params[:sign_up] == 'doctor' %>
+        <% x = 'doctor' %>
+      <% else %>
+        <% x = 'patient' %>
+      <% end %>
 
-  <%= form_for @user,url:users_path(sign_up: params[:sign_up] == 'doctor'? "doctor":"patient") do |form| %>
-    <%= render partial: '/users/form', object: form %>
+      <%= form_for @user, url: users_path(sign_up: x) do |form| %>
+        <%= render partial: '/users/form', object: form %>
 
-    <div class="submit-field">
-      <%= form.submit %>
+        <div class="submit-field">
+          <%= form.submit "Submit", class: "btn btn-primary btn-block mt-2" %>
+        </div>
+
+        <div class="other-links">
+          <%= link_to t(".sign_in"), sign_in_path %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="other-links">
-      <%= link_to t(".sign_in"), sign_in_path %>
-    </div>
-  <% end %>
+  </div>
 </div>
