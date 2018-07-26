@@ -1,7 +1,4 @@
 <!--This is the index page (The dashboard)-->
-<h1>Thanks for signing up for chronos!</h1>
-
-
 <% if @my_patients%>
 <!--Doctor will see this (their patients etc..)-->
     <% @my_patients.each do |patient|%>
@@ -13,6 +10,15 @@
 
 <% if @my_doctor%>
 <!--Patient will see this (their doctor etc..)-->
-    <%= @my_doctor.user.name %>
+    <div><%= image_tag "default_pic.jpg",class:"profile_image"%></div>
+    <div>Name :<%= current_user.name%></div>
+    <div>IC : <%= current_user.ic%></div>
+        <div><%= link_to( @obeses || @diabete || @hypertension == true ? "Full Profile" : "Click here!",patient_path(current_user))%></div>
+    <div>Points of Achievement : <%= current_user.patient.points.present? ? current_user.patient.points : "No points yet."%></div>
     
-<%end%>
+    <%= link_to "Obeses",new_obese_path,remote:true%>
+    <%= link_to "Diabetes",new_diabete_path,remote:true%>
+    <%= link_to "Hypertension",new_hypertension_path,remote:true%>
+    
+    <div id="record-input"></div>
+<%end%>                                                                      

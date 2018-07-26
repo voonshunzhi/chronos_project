@@ -1,0 +1,46 @@
+<% if @user%>
+    <%= form_for @user,url:patient_path(update:"user"),method: :put do |form|%>
+      <div>
+        <%= form.label :name%>
+        <%= form.text_field :name%>
+    </div>
+      <div>
+        <%= form.label :ic%>
+        <%= form.text_field :ic%>
+    </div>
+      <div>
+        <%= form.label :age%>
+        <%= form.text_field :age%>
+    </div>
+      <div>
+        <%= form.label :gender%>
+        <%= form.text_field :gender%>
+    </div>
+    <div>
+        <%= form.label :phone%>
+        <%= form.text_field :phone%>
+    </div>    
+        <%= form.submit "Update" %>
+    <% end %>
+<% end %>
+
+<% if @patient %>
+ <%= form_for @patient,url:patient_path(update:"patient"),method: :put do |form|%>
+    <div>
+        <%= form.label :height%>
+        <%= form.text_field :height%>
+    </div>
+    <div>
+        <%= form.label :weight%>
+        <%= form.text_field :weight%>
+    </div>
+    <div>
+        <%= form.label "Blood Type" %>
+        <%= form.text_field :blood_type %>
+    </div>
+    
+    <%= form.submit "Update" %>
+
+ <% end %> 
+<% end %>
+

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_25_034024) do
+ActiveRecord::Schema.define(version: 2018_07_26_041752) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,9 @@ ActiveRecord::Schema.define(version: 2018_07_25_034024) do
 
   create_table "health_records", force: :cascade do |t|
     t.bigint "patient_id"
+    t.boolean "obese", default: false
+    t.boolean "diabete", default: false
+    t.boolean "hypertension", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["patient_id"], name: "index_health_records_on_patient_id"
@@ -62,6 +65,8 @@ ActiveRecord::Schema.define(version: 2018_07_25_034024) do
     t.bigint "health_record_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.float "weight"
+    t.float "height"
     t.index ["health_record_id"], name: "index_obeses_on_health_record_id"
   end
 
@@ -96,5 +101,5 @@ ActiveRecord::Schema.define(version: 2018_07_25_034024) do
   end
 
   add_foreign_key "doctors", "users"
-  add_foreign_key "obeses", "health_records"
+  add_foreign_key "health_records", "patients"
 end
