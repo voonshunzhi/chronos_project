@@ -1,5 +1,16 @@
 Rails.application.routes.draw do
     
+  #Patient routes
+  resources :patients
+  
+  #Health records routes
+  resources :health_records
+  
+  #Diseases resources
+  resources :diabetes
+  resources :hypertensions
+  resources :obeses
+  
   #All these routes are by gem clearance
   constraints Clearance::Constraints::SignedIn.new do
       root to: 'pages#index', as: :signed_in_root 
@@ -22,6 +33,5 @@ Rails.application.routes.draw do
   get "/sign_up" => "users#new", as: "sign_up"
   
   
-  #Patient routes
-  resources :patients
+  
 end

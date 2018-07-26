@@ -1,0 +1,2 @@
+class HypertensionsController < ApplicationController
+end

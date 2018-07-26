@@ -8,6 +8,9 @@ class PagesController < ApplicationController
             @my_patients = doctor.patients
         else
             @my_doctor = current_user.patient.doctor
+            @obese = current_user.patient.health_record.obeses.first
+            @diabete = current_user.patient.health_record.diabetes.first
+            @hypertension = current_user.patient.health_record.hypertensions.first
         end
     end
 end
