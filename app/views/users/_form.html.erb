@@ -1,41 +1,59 @@
 <%= form.fields_for :info do |i| %>
-  <div class="text-field">
-    <%= i.label :email %>
-    <%= i.text_field :email, type: 'email',autofocus:true %>
+  <div class="text-field mt-2">
+    <%= i.label "Email:" %>
+    <%= i.text_field :email, type: 'email',autofocus:true, class: 'form-control' %>
   </div>
-  <div class="password-field">
-    <%= i.label :password %>
-    <%= i.password_field :password %>
+  <div class="password-field mt-2">
+    <%= i.label "Password:" %>
+    <%= i.password_field :password, class: 'form-control'%>
   </div>
-  <div class="text-field">
-    <%= i.label :name %>
-    <%= i.text_field :name%>
+  <div class="text-field mt-2">
+    <%= i.label "Name:" %>
+    <%= i.text_field :name, class: 'form-control' %>
   </div>
-  <div class="text-field">
-    <%= i.label :age %>
-    <%= i.text_field :age %>
+  <div class="text-field mt-2">
+    <%= i.label "Age:" %>
+    <%= i.text_field :age, class: 'form-control' %>
   </div>
-  <div class="text-field">
-    <%= i.label "IC Number" %>
-    <%= i.text_field :ic %>
+  <div class="text-field mt-2">
+    <%= i.label :ic, "I/C Number:" %>
+    <%= i.text_field :ic, class: 'form-control'%>
   </div>
-  <div class="text-field">
-    <%= i.label :gender %>
-    <%= i.text_field :gender  %>
+  <div class="radio-button mt-4">
+    <%= i.label "Gender:" %>
+    <br>
+    <div class="d-flex justify-content-around">
+      <div>
+        <%= i.radio_button :gender, 'Male', :checked => true %>
+        <%= i.label :gender, "Male" %>
+      </div>
+
+      <div>
+        <%= i.radio_button :gender, 'Female' %>
+        <%= i.label :gender, "Female" %>
+      </div>
+
+      <div>
+        <%= i.radio_button :gender, 'Others' %>
+        <%= i.label :gender, "Others" %>
+      </div>
+      
+    </div>
   </div>
-  <div class="text-field">
-    <%= i.label :phone %>
-    <%= i.text_field :phone %>
-</div>
+  <div class="text-field mt-2">
+    <%= i.label :phone, "Phone Number:" %>
+    <%= i.text_field :phone, class: 'form-control'%>
+  </div>
 <% end %>
+
 <!--Doctor won't see this verification code when they sign up-->
 <% unless params[:sign_up] == "doctor"%>
   <%= form.fields_for :verification do |v| %>
-        <div class="text-field">
-          <%= v.label "Verification Code" %>
-          <%= v.text_field :vcode%>
+        <div class="text-field mt-3 d-flex justify-content-center">
+          <%= v.label "Verification Code:" %>
+          <%= v.text_field :vcode, class: ' ml-3 form-control w-50'%>
         </div>
-<% end %>
+  <% end %>
 <% end %>
 
 
