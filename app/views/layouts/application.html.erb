@@ -38,13 +38,26 @@
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-          <div class="mr-2">
-        <% if params[:sign_up] == 'patient' %>
-          <%= link_to "Sign Up as Doctor", sign_up_path(sign_up:"doctor")%>
-        <% else %>
-          <%= link_to "Sign Up as Patient", sign_up_path(sign_up:"patient")%>
+
+    <ul class="navbar-nav ml-auto">
+
+      <li class="nav-item">
+        <% if !signed_in? && params[:sign_up] == 'patient' %>
+          <%= link_to "Sign Up as Doctor", sign_up_path(sign_up:"doctor"), class: "nav-link"%>
+        <% elsif !signed_in? %>
+          <%= link_to "Sign Up as Patient", sign_up_path(sign_up:"patient"), class: "nav-link" %>
         <% end %>
-      </div>
+      </li>
+
+      <li class="nav-item" id="signinactive" >
+        <% if signed_in? %>
+          <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "nav-link" %>
+        <% else -%>
+          <%= link_to t(".sign_in"), sign_in_path, class: "nav-link" %>
+        <% end -%>
+      </li>
+    
+    </ul>
   </div>
 </nav>
 
