@@ -2,6 +2,7 @@ Rails.application.routes.draw do
     
   #Patient routes
   resources :patients
+  resources :doctors
   
   #Health records routes
   resources :health_records

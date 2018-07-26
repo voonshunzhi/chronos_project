@@ -4,7 +4,7 @@ class PatientsController < ApplicationController
     end
     
     def show
-        @user = User.find(params[:id])
+        @user = Patient.find(params[:id]).user
         @patient = @user.patient
     end
     
@@ -20,11 +20,11 @@ class PatientsController < ApplicationController
         if params[:update] == "user"
             current_user.update(update_params)
             flash[:success] = "Update successful."
-            redirect_to patient_path(current_user)
+            redirect_to patient_path(current_user.patient.id)
         elsif params[:update] == "patient"
             Patient.find_by_user_id(current_user.id).update(update_params)
             flash[:success] = "Update successful."
-            redirect_to patient_path(current_user)
+            redirect_to patient_path(current_user.patient.id)
         end
     end
     

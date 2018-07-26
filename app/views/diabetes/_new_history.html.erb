@@ -1,0 +1,46 @@
+<%= form_for @diabete,url:diabetes_path,remote:true do |form|%>
+<%if current_user.role == 1 || current_user.role == 2%>
+    <div>
+        <%= form.label :hg1ac,"HG1AC :"%>
+        <%= form.text_field :hg1ac%>
+    </div>
+    <div>
+        <%= form.label :medication,"Medication :"%>
+        <%= form.text_field :medication%>
+    </div>
+
+<%end%>
+
+<div>
+    <%= form.label :fasting_blood_glucose,"Fasting blood glucose :"%>
+    <%= form.text_field :fasting_blood_glucose%>
+</div>
+<div>
+    <%= form.label :meal,"After meal blood glucose :"%>
+    <%= form.text_field :meal%>
+</div>
+<div>
+    <%= form.label :blood_glucose_level,"Blood glucose level :"%>
+    <%= form.text_field :blood_glucose_level%>
+</div>
+<div>    
+    <%= form.label :notes,"Notes :"%>
+    <%= form.text_field :notes%>
+</div>
+    <%= form.submit "Create!"%>
+<% end %>
+
+<div id="diabete-record">
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div><%= history.hg1ac %></div>
+            <div><%= history.fasting_blood_glucose %></div>
+            <div><%= history.meal %></div>
+            <div><%= history.blood_glucose_level %></div>
+            <div><%= history.notes %></div>
+            <div><%= history.medication%></div>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>
+</div>

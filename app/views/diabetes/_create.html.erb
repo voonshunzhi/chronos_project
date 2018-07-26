@@ -1,0 +1,14 @@
+<div id="diabete-record">
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div><%= history.hg1ac %></div>
+            <div><%= history.fasting_blood_glucose %></div>
+            <div><%= history.meal %></div>
+            <div><%= history.blood_glucose_level %></div>
+            <div><%= history.notes %></div>
+            <div><%= history.medication%></div>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>
+</div>

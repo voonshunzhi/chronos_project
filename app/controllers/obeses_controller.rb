@@ -4,7 +4,8 @@ class ObesesController < ApplicationController
         @obese = Obese.new
         @history = current_user.patient.health_record.obeses
         respond_to do |format|
-            format.js 
+            # format.html { redirect_to root_path }
+            format.js
         end
     end
     
@@ -15,7 +16,10 @@ class ObesesController < ApplicationController
             flash[:success] = "Record is successfully created."
         else
             flash[:danger] = "Record is not created."
-            render "new"
+        end
+        @history = current_user.patient.health_record.obeses
+        respond_to do |format|
+            format.js
         end
     end
     

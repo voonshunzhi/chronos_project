@@ -1,0 +1,10 @@
+ <% if @history.any? %>
+     <% @history.each do |history|%>
+         <div><%= history.SBP %></div>
+         <div><%= history.DBP %></div>
+         <fiv><%= history.notes %></fiv>
+         <div><%= history.medication %></div>
+     <% end %>
+ <% else %>
+     <%= content_tag("div","No history of your daily record.")%>
+ <% end %>

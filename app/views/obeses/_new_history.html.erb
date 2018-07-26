@@ -18,13 +18,16 @@
     <%= form.submit "Create!"%>
 <% end %>
 
-<% if @history.any? %>
-    <% @history.each do |history|%>
-        <div><%= history.weight %></div>
-        <div><%= history.height %></div>
-        <div><%= history.waist_circumference %></div>
-        <fiv><%= history.notes %></fiv>
-    <% end %>
-<% else %>
-    <%= content_tag("div","No history of your daily record.")%>
-<% end %>
+
+<div id="obese-record">
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div><%= history.weight %></div>
+            <div><%= history.height %></div>
+            <div><%= history.waist_circumference %></div>
+            <fiv><%= history.notes %></fiv>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>    
+</div>

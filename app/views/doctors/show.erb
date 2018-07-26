@@ -1,0 +1,32 @@
+<h1>this is new in doctor, dashboard for doctor</h1>
+<h3>This is the list of your patients </h3>
+
+<!-- the code below is pure dumb, there are so many nested if elses just to add comma between diseases. If there the diseas exists before it, it will add a commar. Feel free to correct it. It is just stupid
+#but it works XD
+ -->
+<%@doctor.patients.each do |pa|%>
+
+	<%= link_to "#{pa.user.name}", patient_path(pa.id)%>  
+
+	<% if pa.health_record.obeses.present?%>
+		with Obesity
+	<%end%>
+
+	<% if pa.health_record.hypertensions.present?%>
+		<%if pa.health_record.obeses.present?%>
+			, Hypertension
+		<%else%>
+			with Hypertension
+		<%end%>
+	<%end%>
+
+	<% if pa.health_record.diabetes.present?%>
+		<%if pa.health_record.obeses.present? || pa.health_record.obeses.present? %>
+			, Diabete
+		<%else%>
+		with Diabete
+		<%end%>
+	<%end%>
+
+	<br/>
+<%end%>
