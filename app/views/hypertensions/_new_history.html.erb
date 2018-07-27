@@ -1,0 +1,35 @@
+<%= form_for @hypertension,url:hypertensions_path,remote:true do |form|%>
+<%if current_user.role == 1 || current_user.role == 2%>
+    <div>
+        <%= form.label :medication,"Medication :"%>
+        <%= form.text_field :medication%>
+    </div>
+<%end%>
+
+<div>
+    <%= form.label :SBP, "Systolic Blood Pressure :"%>
+    <%= form.text_field :SBP%>
+</div>
+<div>
+    <%= form.label :DBP,"Distolic Blood Pressure :"%>
+    <%= form.text_field :DBP%>
+</div>
+<div>    
+    <%= form.label :notes,"Notes :"%>
+    <%= form.text_field :notes%>
+</div>
+    <%= form.submit "Create!"%>
+<% end %>
+
+<div id="hypertension-record">
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div><%= history.SBP %></div>
+            <div><%= history.DBP %></div>
+            <fiv><%= history.notes %></fiv>
+            <div><%= history.medication %></div>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>
+</div>

@@ -16,9 +16,9 @@
         <div><%= link_to( @obeses || @diabete || @hypertension == true ? "Full Profile" : "Click here!",patient_path(current_user))%></div>
     <div>Points of Achievement : <%= current_user.patient.points.present? ? current_user.patient.points : "No points yet."%></div>
     
-    <%= link_to "Obeses",new_obese_path,remote:true%>
-    <%= link_to "Diabetes",new_diabete_path,remote:true%>
-    <%= link_to "Hypertension",new_hypertension_path,remote:true%>
+    <%= link_to "Obeses",new_obese_path,remote:true %>
+    <%= link_to "Diabetes",new_diabete_path,remote:true %>
+    <%= link_to "Hypertension",new_hypertension_path,remote:true %>
     
     <div id="record-input"></div>
 <%end%>                                                                      
