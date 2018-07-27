@@ -1,5 +1,5 @@
-<%= form_for @diabete,url:diabetes_path,remote:true do |form|%>
-<%if current_user.role == 1 || current_user.role == 2%>
+<%= form_for @diabete,url:diabetes_path(id:@patient),remote:true do |form|%>
+<%if current_user.role == 'doctor' || current_user.role == 'admin'%>
     <div>
         <%= form.label :hg1ac,"HG1AC :"%>
         <%= form.text_field :hg1ac%>
@@ -30,17 +30,5 @@
     <%= form.submit "Create!"%>
 <% end %>
 
-<div id="diabete-record">
-    <% if @history.any? %>
-        <% @history.each do |history|%>
-            <div><%= history.hg1ac %></div>
-            <div><%= history.fasting_blood_glucose %></div>
-            <div><%= history.meal %></div>
-            <div><%= history.blood_glucose_level %></div>
-            <div><%= history.notes %></div>
-            <div><%= history.medication%></div>
-        <% end %>
-    <% else %>
-        <%= content_tag("div","No history of your daily record.")%>
-    <% end %>
-</div>
+
+<%= link_to "press to go history", diabetes_path(id:@patient),remote:true%>

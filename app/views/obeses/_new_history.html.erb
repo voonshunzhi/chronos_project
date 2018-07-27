@@ -1,4 +1,4 @@
-<%= form_for @obese,url:obeses_path,remote:true do |form|%>
+<%= form_for @obese,url:obeses_path(id:@patient),remote:true do |form|%>
 <div>
     <%= form.label :weight,"Weight :"%>
     <%= form.text_field :weight%>
@@ -18,16 +18,4 @@
     <%= form.submit "Create!"%>
 <% end %>
 
-
-<div id="obese-record">
-    <% if @history.any? %>
-        <% @history.each do |history|%>
-            <div><%= history.weight %></div>
-            <div><%= history.height %></div>
-            <div><%= history.waist_circumference %></div>
-            <fiv><%= history.notes %></fiv>
-        <% end %>
-    <% else %>
-        <%= content_tag("div","No history of your daily record.")%>
-    <% end %>    
-</div>
+<%= link_to "press to go history", obeses_path(id:@patient),remote:true%>

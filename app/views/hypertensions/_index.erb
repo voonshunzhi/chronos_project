@@ -1,0 +1,13 @@
+<div id="hypertension-record">
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div>SBP :<%= history.SBP %></div>
+            <div>DBP :<%= history.DBP %></div>
+            <fiv>Notes :<%= history.notes %></fiv>
+            <div>Medication :<%= history.medication %></div>
+            <br\>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>
+</div>

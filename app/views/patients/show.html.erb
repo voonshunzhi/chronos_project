@@ -22,8 +22,8 @@
 </div>
 
 <div style="border:1px black solid; width:50%;display:flex; justify-content: space-around;">
-    <%= link_to "Obeses",new_obese_path,remote:true %>
-    <%= link_to "Diabetes",new_diabete_path,remote:true %>
-    <%= link_to "Hypertension",new_hypertension_path,remote:true %>
+    <%= link_to "Obeses",new_obese_path(id:@patient.id),remote:true %>
+    <%= link_to "Diabetes",new_diabete_path(id:@patient.id),remote:true %>
+    <%= link_to "Hypertension",new_hypertension_path(id:@patient.id),remote:true %>
 </div>
 <div id="record-input"></div>

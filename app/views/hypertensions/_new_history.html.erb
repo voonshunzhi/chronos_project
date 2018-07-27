@@ -1,5 +1,5 @@
-<%= form_for @hypertension,url:hypertensions_path,remote:true do |form|%>
-<%if current_user.role == 1 || current_user.role == 2%>
+<%= form_for @hypertension,url:hypertensions_path(id:@patient),remote:true do |form|%>
+<%if current_user.role == 'doctor' || current_user.role == 'admin'%>
     <div>
         <%= form.label :medication,"Medication :"%>
         <%= form.text_field :medication%>
@@ -21,15 +21,4 @@
     <%= form.submit "Create!"%>
 <% end %>
 
-<div id="hypertension-record">
-    <% if @history.any? %>
-        <% @history.each do |history|%>
-            <div><%= history.SBP %></div>
-            <div><%= history.DBP %></div>
-            <fiv><%= history.notes %></fiv>
-            <div><%= history.medication %></div>
-        <% end %>
-    <% else %>
-        <%= content_tag("div","No history of your daily record.")%>
-    <% end %>
-</div>
+<%= link_to "press to go history", hypertensions_path(id:@patient),remote:true%>
