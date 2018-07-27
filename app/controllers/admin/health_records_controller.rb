@@ -19,10 +19,14 @@ module Admin
     # for more information
 
 
-     def scoped_resource
+    def scoped_resource
       doctor =   current_user.doctor
       ids = doctor.patients.collect {|pt| pt.health_record.id}
       resource_class.where(id: ids)
+    end
+
+    def valid_action?(name, resource = resource_class)
+      %w[edit destroy].exclude?(name.to_s) && super
     end
 
 

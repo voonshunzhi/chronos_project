@@ -11,6 +11,7 @@ class PatientDashboard < Administrate::BaseDashboard
     user: Field::BelongsTo,
     doctor: Field::BelongsTo,
     health_record: Field::HasOne,
+    name: NameField,
     id: Field::Number,
     height: Field::Number.with_options(decimals: 2),
     weight: Field::Number.with_options(decimals: 2),
@@ -26,10 +27,9 @@ class PatientDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :user,
-    :doctor,
+    :name,
     :health_record,
-    :id,
+    :id
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -66,8 +66,4 @@ class PatientDashboard < Administrate::BaseDashboard
   # def display_resource(patient)
   #   "Patient ##{patient.id}"
   # end
-
-  def valid_action?(name, resource = resource_class)
-  %w[edit show destroy].exclude?(name.to_s) && super
-  end
 end
