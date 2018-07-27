@@ -12,6 +12,7 @@ class PatientDashboard < Administrate::BaseDashboard
     doctor: Field::BelongsTo,
     health_record: Field::HasOne,
     name: NameField,
+    age: AgeField,
     id: Field::Number,
     height: Field::Number.with_options(decimals: 2),
     weight: Field::Number.with_options(decimals: 2),
@@ -28,6 +29,7 @@ class PatientDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
     :name,
+    :age,
     :health_record,
     :id
   ].freeze
