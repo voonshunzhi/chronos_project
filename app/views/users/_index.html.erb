@@ -1,0 +1,26 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>IC</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Role</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @users.each do |user|%>
+	    <tr>
+	      <%= content_tag "th",user.name%>
+	      <%= content_tag "th",user.ic%>
+	      <%= content_tag "th",user.phone ? user.phone : "--------"%>
+	      <%= content_tag "th",user.email%>
+	      <%= content_tag "th",user.gender.titlecase%>
+	      <%= content_tag "th",user.role.titlecase%>
+	    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

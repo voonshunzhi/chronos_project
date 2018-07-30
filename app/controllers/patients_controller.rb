@@ -1,6 +1,11 @@
 class PatientsController < ApplicationController
     def index
         #Used to show all the patient
+        @patients = Patient.all
+        @patients = @patients.reject { |p| p.user.role == 'admin'}
+        respond_to do |format|
+          format.js
+        end 
     end
     
     def show

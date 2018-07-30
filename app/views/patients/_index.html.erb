@@ -1,0 +1,32 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Patient's Name</th>
+      <th>IC</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Body height</th>
+      <th>Body height</th>
+      <th>Blood Type</th>
+      <th>Points</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @patients.each do |patient|%>
+	    <tr>
+	      <%= content_tag "th",patient.user.name%>
+	      <%= content_tag "th",patient.user.ic%>
+	      <%= content_tag "th",patient.user.phone ? patient.user.phone : "--------"%>
+	      <%= content_tag "th",patient.user.email%>
+	      <%= content_tag "th",patient.user.gender.titlecase%>
+	      <%= content_tag "th",patient.height%>
+        <%= content_tag "th",patient.weight%>
+        <%= content_tag "th",patient.blood_type%>
+        <%= content_tag "th",patient.points%>
+	    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

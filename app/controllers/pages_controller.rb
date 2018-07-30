@@ -9,6 +9,8 @@ class PagesController < ApplicationController
         elsif current_user.role == 'patient'
             patient = Patient.find_by_user_id(current_user.id)
             redirect_to patient_path(patient.id)
+        elsif current_user.role == 'admin'
+            redirect_to superadmin_path
         else
             Console.log("user.role not detected")
             redirect_to root_path

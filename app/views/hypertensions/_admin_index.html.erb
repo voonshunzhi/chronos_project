@@ -1,0 +1,26 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>IC</th>
+      <th>Systolic</th>
+      <th>Diastolic</th>
+      <th>Medication</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @hypertensions.each do |r|%>
+	    <tr>
+	      <%= content_tag "th",r.health_record.patient.user.name%>
+	      <%= content_tag "th",r.health_record.patient.user.ic%>
+        <%= content_tag "th",r.SBP%>
+        <%= content_tag "th",r.DBP%>
+        <%= content_tag "th",r.medication%>
+        <%= content_tag "th",truncate(r.notes,length:20)%>
+	    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

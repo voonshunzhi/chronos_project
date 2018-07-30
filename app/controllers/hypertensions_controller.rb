@@ -35,7 +35,12 @@ class HypertensionsController < ApplicationController
 	        format.js
 	    end
 	end
-	
+	def admin_index
+		@hypertensions = Hypertension.all
+		respond_to do |format|
+			format.js
+		end
+	end
 	private
 	def hypertension_params
 	    params.require(:hypertension).permit(:medication,:SBP,:DBP,:notes)
