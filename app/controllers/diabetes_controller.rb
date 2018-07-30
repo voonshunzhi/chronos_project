@@ -37,15 +37,16 @@ class DiabetesController < ApplicationController
 	end
 	
 	def create
-		patient = Patient.find(params[:id])
+		@patient = Patient.find(params[:id])
 	    @diabete = Diabete.new(diabete_params)
-	    @diabete.health_record_id = patient.health_record.id
+	    @diabete.health_record_id = @patient.health_record.id
 	    if @diabete.save
 	        flash.now[:success] = "Record is successfully created."
+	        @patient.update(points: @patient.points.to_i += 30)
 	    else
 	        flash.now[:danger] = "Record is not created."
 	    end
-	    @history = patient.health_record.diabetes
+	    @history = @patient.health_record.diabetes
 	    respond_to do |format|
 	        format.js
 	    end

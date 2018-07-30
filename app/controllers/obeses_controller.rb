@@ -18,15 +18,16 @@ class ObesesController < ApplicationController
     end
     
     def create
-        patient = Patient.find(params[:id])
+        @patient = Patient.find(params[:id])
         obese = Obese.new(obese_params)
-        obese.health_record_id = patient.health_record.id
+        obese.health_record_id = @patient.health_record.id
         if obese.save
             flash.now[:success] = "Record is successfully created."
+            @patient.update(points: @patient.points.to_i + 30)
         else
             flash.now[:danger] = "Record is not created."
         end
-        @history = patient.health_record.obeses.paginate(:page => params[:page], :per_page => 5)
+        @history = @patient.health_record.obeses.paginate(:page => params[:page], :per_page => 5)
         
         respond_to do |format|
             format.js

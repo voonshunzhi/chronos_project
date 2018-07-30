@@ -6,6 +6,7 @@ class PatientsController < ApplicationController
     def show
         @user = Patient.find(params[:id]).user
         @patient = @user.patient
+        # @badge = Badge.all[0]
     end
     
     def edit

@@ -1,4 +1,5 @@
 <h1>This is show in patient controller</h1>
+<!-- <#%=image_tag @badge.image%> -->
 
 <% if @user.id == current_user.id %> 
     <h1><%=  "My Profile: #{@user.name}'s Profile"%></h1>
@@ -26,7 +27,7 @@
     <div><%= link_to "Update Health Profile",edit_patient_path(id:@user,form:"patient")%></div>
 
 
-    <div>Points of Achievement : <%= @user.patient.points.present? ?   @user.patient.points : "No points yet."%></div>
+    <div>Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%></div>
 </div>
 
 <div style="border:1px black solid; width:50%;display:flex; justify-content: space-around;">
