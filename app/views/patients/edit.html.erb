@@ -20,6 +20,10 @@
         <%= form.label :phone%>
         <%= form.text_field :phone%>
     </div>    
+    <div>
+        <%=form.label :avatar, @user.avatar? ? "Edit photo" : "Upload photo"%>
+        <%=form.file_field :avatar%>
+    </div>
         <%= form.submit "Update" %>
     <% end %>
 <% end %>

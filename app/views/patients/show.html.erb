@@ -1,10 +1,12 @@
 <h1>This is show in patient controller</h1>
 
-<% if @user.id == current_user.id || current_user.role != "patient"%> 
-<h1><%=  "My Profile: #{@user.name}'s Profile"%></h1>
+<% if @user.id == current_user.id %> 
+    <h1><%=  "My Profile: #{@user.name}'s Profile"%></h1>
+<%else%>
+    <h1><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
 <%end%>
 <div>
-    <div><%= image_tag "default_pic.jpg",class:"profile_image",style:"width:200px"%></div>
+    <div><%= image_tag @user.avatar.url,class:"profile_image",style:"width:200px"%></div>
     <div style="border:1px black solid;width:50%">
         <div>Name : <%= @user.name%></div>
         <div>IC : <%= @user.ic%></div>
@@ -12,12 +14,18 @@
         <div>Gender : <%= @user.gender%></div>
         <div>Phone : <%= @user.phone%></div>
         <div>Email : <%= @user.email%></div>
+        <% if current_user.role == "patient" %>
         <div><%= link_to "Update Personal Profile",edit_patient_path(id:current_user,form:"user")%></div>
+        <% end %>
     </div>
     <div>Height : <%= @user.patient.height.present? ?   @user.patient.height : "Please add your height"%> cm</div>
     <div>Weight : <%= @user.patient.weight.present? ?   @user.patient.weight : "Please add your weight"%> kg</div>
     <div>Blood Type : <%= @user.patient.blood_type.present? ?   @user.patient.blood_type : "Please add your blood type"%> type</div>
-    <div><%= link_to "Update Health Profile",edit_patient_path(id:current_user,form:"patient")%></div>
+
+
+    <div><%= link_to "Update Health Profile",edit_patient_path(id:@user,form:"patient")%></div>
+
+
     <div>Points of Achievement : <%= @user.patient.points.present? ?   @user.patient.points : "No points yet."%></div>
 </div>
 

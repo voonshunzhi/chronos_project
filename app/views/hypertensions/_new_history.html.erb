@@ -1,24 +1,30 @@
-<%= form_for @hypertension,url:hypertensions_path(id:@patient),remote:true do |form|%>
-<%if current_user.role == 'doctor' || current_user.role == 'admin'%>
+<% unless !@patient.health_record.hypertensions.where("created_at > ? AND created_at<?",Date.yesterday,Date.tomorrow).empty? && current_user.role == "patient"%>
+    <%= form_for @hypertension,url:hypertensions_path(id:@patient),remote:true do |form|%>
+        <%if current_user.role == 'doctor' || current_user.role == 'admin'%>
+            <div>
+                <%= form.label :medication,"Medication :"%>
+                <%= form.text_field :medication%>
+            </div>
+        <%end%>
+
+        <div>
+            <%= form.label :SBP, "Systolic Blood Pressure :"%>
+            <%= form.text_field :SBP%>
+        </div>
+        <div>
+            <%= form.label :DBP,"Distolic Blood Pressure :"%>
+            <%= form.text_field :DBP%>
+        </div>
+        <div>    
+            <%= form.label :notes,"Notes :"%>
+            <%= form.text_field :notes%>
+        </div>
+            <%= form.submit "Create!"%>
+    <%end%>
+<%else%>
     <div>
-        <%= form.label :medication,"Medication :"%>
-        <%= form.text_field :medication%>
+        <%= content_tag "strong", "You have already made a record today!"%>
     </div>
 <%end%>
-
-<div>
-    <%= form.label :SBP, "Systolic Blood Pressure :"%>
-    <%= form.text_field :SBP%>
-</div>
-<div>
-    <%= form.label :DBP,"Distolic Blood Pressure :"%>
-    <%= form.text_field :DBP%>
-</div>
-<div>    
-    <%= form.label :notes,"Notes :"%>
-    <%= form.text_field :notes%>
-</div>
-    <%= form.submit "Create!"%>
-<% end %>
 
 <%= link_to "press to go history", hypertensions_path(id:@patient),remote:true%>

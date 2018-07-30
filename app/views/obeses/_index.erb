@@ -1,3 +1,8 @@
+<div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%=h value %></div>
+      <% end %>
+    </div>
 <div id="obese-record">
     <% if @history.any? %>
         <% @history.each do |history|%>
@@ -5,6 +10,7 @@
             <div>Height :<%= history.height %></div>
             <div>Waist Circumference :<%= history.waist_circumference %></div>
             <div>Notes :<%= history.notes %></div>
+            <div>created <%= time_ago_in_words(history.created_at)%> ago</div>
             <br/>
         <% end %>
     <% else %>

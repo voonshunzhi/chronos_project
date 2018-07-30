@@ -12,7 +12,7 @@ class PatientsController < ApplicationController
         if params[:form] == "user"
             @user = current_user
         elsif params[:form] == "patient"
-            @patient = Patient.find_by_user_id(current_user.id)
+            @patient = Patient.find_by_user_id(params[:id])
         end
     end
     
@@ -22,16 +22,17 @@ class PatientsController < ApplicationController
             flash[:success] = "Update successful."
             redirect_to patient_path(current_user.patient.id)
         elsif params[:update] == "patient"
-            Patient.find_by_user_id(current_user.id).update(update_params)
+            patient = Patient.find_by_user_id(params[:id])
+            patient.update(update_params)
             flash[:success] = "Update successful."
-            redirect_to patient_path(current_user.patient.id)
+            redirect_to patient_path(patient.id)
         end
     end
     
     private
     def update_params
         if params[:update] == "user"
-            params.require(:user).permit(:name,:age,:email,:ic,:gender,:phone)
+            params.require(:user).permit(:name,:age,:email,:ic,:gender,:phone,:avatar)
         elsif params[:update] == "patient"
            params.require(:patient).permit(:height,:weight,:blood_type)
         end
