@@ -1,10 +1,13 @@
+<h2>Redeem your points with our prizes</h2>
+
 <% @prizes.each do |pa|%>
 	<div><%= image_tag pa.image.url,class:"profile_image border border-light",style:"width:200px"%></div>
 	<p>Prize's name: <%=pa.name%></p>
 	<p>Prize's description: <%=pa.description%></p>
 	<p>Points to be redeem: <%=pa.cost%></p>
+	<div><%= link_to "Redeem Prize",deduct_point_path(pa.id)%></div>
 	
 	
 	
 
-<%end%>
+<%end%>	

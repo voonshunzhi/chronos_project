@@ -53,4 +53,5 @@ Rails.application.routes.draw do
   get "admin/all_users" => "superadmins#all_users"
   get "admin/all_active_patients" => "superadmins#all_active_patients"
   get "admin/all_points" => "superadmins#all_points"
+  get "prizes/:id/deduct_point" => "prizes#deduct_point", as: "deduct_point"
 end
