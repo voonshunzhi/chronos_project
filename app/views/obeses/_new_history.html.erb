@@ -1,33 +1,26 @@
-<%= form_for @obese,url:obeses_path,remote:true do |form|%>
-<div>
-    <%= form.label :weight,"Weight :"%>
-    <%= form.text_field :weight%>
-</div>
-<div>
-    <%= form.label :height,"Height :"%>
-    <%= form.text_field :height%>
-</div>
-<div>
-    <%= form.label :waist_circumference,"Waist Circumference :"%>
-    <%= form.text_field :waist_circumference%>
-</div>
-<div>    
-    <%= form.label :notes,"Notes :"%>
-    <%= form.text_field :notes%>
-</div>
-    <%= form.submit "Create!"%>
-<% end %>
-
-
-<div id="obese-record">
-    <% if @history.any? %>
-        <% @history.each do |history|%>
-            <div><%= history.weight %></div>
-            <div><%= history.height %></div>
-            <div><%= history.waist_circumference %></div>
-            <fiv><%= history.notes %></fiv>
-        <% end %>
-    <% else %>
-        <%= content_tag("div","No history of your daily record.")%>
-    <% end %>    
-</div>
+<% unless !@patient.health_record.obeses.where("created_at > ? AND created_at<?",Date.yesterday,Date.tomorrow).empty? && current_user.role == "patient"%>
+	<%= form_for @obese,url:obeses_path(id:@patient),remote:true do |form|%>
+		<div>
+		    <%= form.label :weight,"Weight :"%>
+		    <%= form.text_field :weight%>
+		</div>
+		<div>
+		    <%= form.label :height,"Height :"%>
+		    <%= form.text_field :height%>
+		</div>
+		<div>
+		    <%= form.label :waist_circumference,"Waist Circumference :"%>
+		    <%= form.text_field :waist_circumference%>
+		</div>
+		<div>    
+		    <%= form.label :notes,"Notes :"%>
+		    <%= form.text_field :notes%>
+		</div>
+	<%= form.submit "Create!"%>
+	<% end %>
+<%else%>
+	<div>
+		<%= content_tag "strong", "You have already made a record today!"%>
+	</div>
+<%end%>
+<%= link_to "press to go history", obeses_path(id:@patient),remote:true%>

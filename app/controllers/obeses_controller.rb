@@ -1,23 +1,34 @@
 class ObesesController < ApplicationController
-    
-    def new
-        @obese = Obese.new
-        @history = current_user.patient.health_record.obeses
+    def index
+        patient = Patient.find(params[:id])
+        @history = patient.health_record.obeses.paginate(:page => params[:page], :per_page => 5)
         respond_to do |format|
-            # format.html { redirect_to root_path }
+            format.js { render "create" }
+        end
+    end
+
+    def new
+        # passed in patient.id as a params, to keep track of the patient, instead of current_user.id, to allow doctors to see the histories too.
+        @patient = Patient.find(params[:id])
+        @obese = Obese.new
+        @history = @patient.health_record.obeses.paginate(:page => params[:page], :per_page => 5)
+        respond_to do |format|
             format.js
         end
     end
     
     def create
-        @obese = Obese.new(obese_params)
-        @obese.health_record_id = current_user.patient.health_record.id
-        if @obese.save
-            flash[:success] = "Record is successfully created."
+        @patient = Patient.find(params[:id])
+        obese = Obese.new(obese_params)
+        obese.health_record_id = @patient.health_record.id
+        if obese.save
+            flash.now[:success] = "Record is successfully created."
+            @patient.update(points: @patient.points.to_i + 30)
         else
-            flash[:danger] = "Record is not created."
+            flash.now[:danger] = "Record is not created."
         end
-        @history = current_user.patient.health_record.obeses
+        @history = @patient.health_record.obeses.paginate(:page => params[:page], :per_page => 5)
+        
         respond_to do |format|
             format.js
         end

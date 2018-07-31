@@ -1,0 +1,21 @@
+<h1>This is index in diabetes</h1>
+<div id="diabete-record">
+
+    <% if @history.any? %>
+        <% @history.each do |history|%>
+            <div style="border:solid black 1px">
+                <%= "HG1AC : #{history.hg1ac}" if history.hg1ac? %><br/>
+                <%= "Medication : #{history.medication}" if history.medication? %><br/>
+                <%="Fasting Blood Glucose : #{history.fasting_blood_glucose}" if  history.fasting_blood_glucose?%><br/>
+                <%= "Meal: #{history.meal}" if history.meal %><br/>
+                <%= "Blood Glucose Level: #{history.blood_glucose_level}" if history.blood_glucose_level %><br/>
+                <%="Notes : #{history.notes}"  if history.notes? %>
+                Created <%= time_ago_in_words(history.created_at) %> ago by <%= history.hg1ac? ? history.health_record.patient.doctor.user.name : history.health_record.patient.user.name%>
+                <%= link_to "Edit Record", edit_diabete_path(history),remote:true%>
+            </div>
+            <br/>
+        <% end %>
+    <% else %>
+        <%= content_tag("div","No history of your daily record.")%>
+    <% end %>
+</div>

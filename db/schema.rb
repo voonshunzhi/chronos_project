@@ -10,10 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_26_041752) do
+ActiveRecord::Schema.define(version: 2018_07_30_090237) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "badges", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "diabetes", force: :cascade do |t|
     t.float "fasting_blood_glucose"
@@ -79,6 +87,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_041752) do
     t.integer "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "level"
     t.index ["doctor_id"], name: "index_patients_on_doctor_id"
     t.index ["user_id"], name: "index_patients_on_user_id"
   end
@@ -96,6 +105,7 @@ ActiveRecord::Schema.define(version: 2018_07_26_041752) do
     t.string "encrypted_password", limit: 128
     t.string "confirmation_token", limit: 128
     t.string "remember_token", limit: 128
+    t.string "avatar"
     t.index ["email"], name: "index_users_on_email"
     t.index ["remember_token"], name: "index_users_on_remember_token"
   end
