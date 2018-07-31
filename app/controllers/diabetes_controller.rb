@@ -1,7 +1,7 @@
 class DiabetesController < ApplicationController
 	def index
-		 patient = Patient.find(params[:id])
-        @history = patient.health_record.diabetes.paginate(:page => params[:page], :per_page => 5)
+		@patient = Patient.find(params[:id])
+        @history = @patient.health_record.diabetes.paginate(:page => params[:page], :per_page => 5)
         respond_to do |format|
             format.js { render "create" }
         end

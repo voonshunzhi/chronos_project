@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   
 
   get "sign_in" => "clearance/sessions#new", as: "sign_in"
-  delete "/ign_out" => "clearance/sessions#destroy", as: "sign_out"
+  delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "sign_up" => "users#new", as: "sign_up"
   get "superadmin" => "superadmins#index"
   get "admin/obeses" => "obeses#admin_index",as: "obeses_admin_index"
