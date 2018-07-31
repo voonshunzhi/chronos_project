@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
     
-  namespace :admin do
-      resources :patients
-      resources :health_records
-      resources :diabetes
-      # resources :doctors
-      resources :hypertensions
-      resources :obeses
-      # resources :users
+  # namespace :admin do
+  #     resources :patients
+  #     resources :health_records
+  #     resources :diabetes
+  #     # resources :doctors
+  #     resources :hypertensions
+  #     resources :obeses
+  #     # resources :users
 
-      root to: "diabetes#index"
-    end
+  #     root to: "diabetes#index"
+  #   end
   #Patient routes
   resources :users,only:[:index]
   resources :patients

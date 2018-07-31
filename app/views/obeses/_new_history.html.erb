@@ -23,4 +23,4 @@
 		<%= content_tag "strong", "You have already made a record today!"%>
 	</div>
 <%end%>
-<%= link_to "press to go history", obeses_path(id:@patient),remote:true%>
+<%= link_to 'History',obeses_path(id:@patient),class:"btn btn-primary",data: { toggle: 'modal', target:"#exampleModalCenter" } %>
