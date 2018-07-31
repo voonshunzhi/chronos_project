@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :diabetes
   resources :hypertensions
   resources :obeses
-  
+  resources :badges
   #All these routes are by gem clearance
   constraints Clearance::Constraints::SignedIn.new do
       root to: 'pages#index', as: :signed_in_root 
@@ -39,4 +39,5 @@ Rails.application.routes.draw do
   get "admin/hypertensions" => "hypertensions#admin_index",as: "hypertensions_admin_index"
   get "admin/all_users" => "superadmins#all_users"
   get "admin/all_active_patients" => "superadmins#all_active_patients"
+  get "admin/badges" => "superadmin#badges",as: "admin_badges"
 end
