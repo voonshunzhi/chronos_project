@@ -34,6 +34,13 @@ class ObesesController < ApplicationController
         end
     end
     
+    def admin_index
+        @obeses = Obese.all
+        respond_to do |format|
+            format.js
+        end
+    end
+
     private
     def obese_params
         params.require(:obese).permit(:weight,:height,:waist_circumference,:notes)

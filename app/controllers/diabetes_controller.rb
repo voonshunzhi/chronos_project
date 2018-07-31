@@ -53,6 +53,13 @@ class DiabetesController < ApplicationController
 
 	end
 	
+	def admin_index
+		@diabetes = Diabete.all
+		respond_to do |format|
+			format.js
+		end
+	end
+
 	private
 	def diabete_params
 	    params.require(:diabete).permit(:hg1ac,:medication,:fasting_blood_glucose,:meal,:blood_glucose_level,:notes)

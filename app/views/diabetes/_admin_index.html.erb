@@ -1,0 +1,30 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>IC</th>
+      <th>B.Glocose(Before)</th>
+      <th>B.Glucose(After)</th>
+      <th>B.Glucose(Fasting)</th>
+      <th>HGA1C</th>
+      <th>Medication</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @diabetes.each do |r|%>
+	    <tr>
+	      <%= content_tag "th",r.health_record.patient.user.name%>
+	      <%= content_tag "th",r.health_record.patient.user.ic%>
+        <%= content_tag "th",r.blood_glucose_level%>
+        <%= content_tag "th",r.meal%>
+        <%= content_tag "th",r.hg1ac ? r.hg1ac : "------"%>
+        <%= content_tag "th",r.fasting_blood_glucose ? r.fasting_blood_glucose : "------"%>
+        <%= content_tag "th",r.medication%>
+        <%= content_tag "th",truncate(r.notes,length:20)%>
+	    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

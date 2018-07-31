@@ -2,6 +2,14 @@
 class UsersController < Clearance::UsersController
   before_action :is_doctor?, only: [:create]
   
+  def index
+    @users = User.all
+    @users = @users.reject { |p| p.role == 'admin'}
+    respond_to do |format|
+      format.js
+    end 
+  end
+
   def new
     @user = User.new
   end

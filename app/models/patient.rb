@@ -4,7 +4,7 @@ class Patient < ApplicationRecord
 	belongs_to :user
 	belongs_to :doctor
 	has_one :health_record
-	before_save :check_level
+	# before_save :check_level
 
 	# def check_level
 	# 	if self.points>=200

@@ -1,0 +1,28 @@
+<div class="table-responsive">
+<table class="table table-striped table-sm">
+  <thead>
+    <tr>
+      <th>Doctor's Name</th>
+      <th>IC</th>
+      <th>Phone</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Verification Code</th>
+      <th>Num. of patients</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<% @doctors.each do |doctor|%>
+	    <tr>
+	      <%= content_tag "th",doctor.user.name%>
+	      <%= content_tag "th",doctor.user.ic%>
+	      <%= content_tag "th",doctor.user.phone ? user.phone : "--------"%>
+	      <%= content_tag "th",doctor.user.email%>
+	      <%= content_tag "th",doctor.user.gender.titlecase%>
+	      <%= content_tag "th",doctor.code%>
+        <%= content_tag "th",doctor.patients.count%>
+	    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

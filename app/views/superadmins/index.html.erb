@@ -1,0 +1,73 @@
+<div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Users",users_path,class:"nav-link",remote:true%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Patients",patients_path,class:"nav-link",remote:true%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Doctors",doctors_path,class:"nav-link",remote:true%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Badges",badges_path,class:"nav-link",remote:true%>
+              </li>
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>Disease reports</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+                <span data-feather="plus-circle"></span>
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <%= link_to "Obeses",obeses_admin_index_path,class:"nav-link",remote:true%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Diabetes",diabetes_admin_index_path,class:"nav-link",remote:true%>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Hypertensions",hypertensions_admin_index_path,class:"nav-link",remote:true%>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+          <h2 id="admin-show-text"></h2>
+          <div id="admin-show-all">
+            <div class="row">
+              <div class="col-md-11 col-md-offset-1">
+                <button class="btn btn-primary" style="margin:5px" id="all-diseases">All users</button>
+                <button class="btn btn-primary" style="margin:5px" id="active-patients">User's activity last 7 days</button>
+                <button class="btn btn-primary" style="margin:5px" id="points">Points</button>
+              </div>
+            </div>
+            <div class="row" style="margin:20px;">
+              <div class="card text-white bg-danger mb-3" style="max-width:100%;">
+                <div class="card-body">
+                  <div id="barchart_material" style="width:950px;height:500px;">
+                  <div style="width:100%;height:100%;background-color:#dc3545;position: relative;" align="center">
+                    <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%)">
+                      <h3 style="color:black">Welcome to the admin panel!</h3>
+                      <h3 style="color:black">Click on buttons to show the latest analytics!</h3>
+                    </div>
+                  </div>
+               </div>
+                </div>
+              </div>
+            </div>
+	      </div>
+        </main>
+      </div>
+    </div>
