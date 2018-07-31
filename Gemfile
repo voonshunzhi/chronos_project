@@ -34,11 +34,7 @@ gem 'autoprefixer-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'carrierwave'
-<<<<<<< HEAD
-=======
 gem 'kaminari'
-
->>>>>>> wip
 gem "d3-rails"
 gem 'administrate'
 gem "will_paginate"
