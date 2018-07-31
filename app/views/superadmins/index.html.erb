@@ -44,100 +44,30 @@
         </nav>
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-
-          
           <h2 id="admin-show-text"></h2>
           <div id="admin-show-all">
             <div class="row">
-              <button class="btn btn-primary" style="margin:5px" id="all-diseases">All users</button>
-              <button class="btn btn-primary" style="margin:5px" id="active-patients">User's activity last 7 days</button>
-              <button class="btn btn-primary" style="margin:5px" id="points">Points</button>
+              <div class="col-md-11 col-md-offset-1">
+                <button class="btn btn-primary" style="margin:5px" id="all-diseases">All users</button>
+                <button class="btn btn-primary" style="margin:5px" id="active-patients">User's activity last 7 days</button>
+                <button class="btn btn-primary" style="margin:5px" id="points">Points</button>
+              </div>
             </div>
             <div class="row" style="margin:20px;">
-	             <div id="barchart_material" style="width: 900px; height: 500px;">
-                  <div style="width:100%;height:100%;background-color:#dc3545position: relative;" align="center">
+              <div class="card text-white bg-danger mb-3" style="max-width:100%;">
+                <div class="card-body">
+                  <div id="barchart_material" style="width:950px;height:500px;">
+                  <div style="width:100%;height:100%;background-color:#dc3545;position: relative;" align="center">
                     <div style="position:absolute;top:50%;left:50%;transform: translate(-50%,-50%)">
                       <h3 style="color:black">Welcome to the admin panel!</h3>
                       <h3 style="color:black">Click on buttons to show the latest analytics!</h3>
                     </div>
                   </div>
                </div>
+                </div>
+              </div>
             </div>
 	      </div>
         </main>
       </div>
     </div>
-
-<script type="text/javascript">
-  var button1 = $('#all-diseases')
-  var button2 = $('#active-patients')
-  button1.click(function(){
-    $.get("admin/all_users",function(infos){
-
-      doctor = infos[0]
-      patient = infos[1]
-
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-          ['Users', 'Doctor', 'Patient'],
-          ['2018',doctor,patient]
-        ]);
-
-        var options = {
-          chart: {
-            title: 'Doctors and Patients'
-          },
-          bars: 'horizontal' // Required for Material Bar Charts.
-        };
-
-        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-      }
-    },"json")
-  })
-
-    button2.click(function(){
-      $.get("admin/all_active_patients",function(infos){
-
-        console.log(infos)
-      google.charts.load('current', {'packages':['line']});
-      google.charts.setOnLoadCallback(drawChart);
-
-    function drawChart() {
-
-      var data = new google.visualization.DataTable();
-      data.addColumn('string', 'Day');
-      data.addColumn('number', 'Obeses');
-      data.addColumn('number', 'Diabetes');
-      data.addColumn('number', 'Hypertensions');
-
-      data.addRows([
-        infos[0],
-        infos[1],
-        infos[2],
-        infos[3],
-        infos[4],
-        infos[5],
-        infos[6],
-        infos[7]
-      ]);
-
-      var options = {
-        chart: {
-          title: 'Daily Active Users'
-        },
-        width: 900,
-        height: 500
-      };
-
-      var chart = new google.charts.Line(document.getElementById('barchart_material'));
-
-      chart.draw(data, google.charts.Line.convertOptions(options));
-    }
-    },"json")
-    })
-</script>

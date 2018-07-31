@@ -39,5 +39,5 @@ Rails.application.routes.draw do
   get "admin/hypertensions" => "hypertensions#admin_index",as: "hypertensions_admin_index"
   get "admin/all_users" => "superadmins#all_users"
   get "admin/all_active_patients" => "superadmins#all_active_patients"
-  get "admin/badges" => "superadmin#badges",as: "admin_badges"
+  get "admin/all_points" => "superadmins#all_points"
 end

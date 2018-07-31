@@ -1,6 +1,83 @@
 <h1>This is show in patient controller</h1>
 <!-- <#%=image_tag @badge.image%> -->
+<!-- This is where bootstrap starts son -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
 
+    <title>Album example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="album.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <main role="main">
+    <div class="container">
+      <section class="jumbotron text-center bg-light">
+        <div class="container">
+            <div><%= image_tag @user.avatar.url,class:"profile_image border border-light",style:"width:200px"%></div>
+            <% if @user.id == current_user.id %> 
+                <h1 class="jumbotron-heading"><%=  "- My Profile - "%></h1>
+            <%else%>
+                <h1 class="jumbotron-heading"><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
+            <%end%>
+          <h6 class="lead text-info my-0">Name : <%= @user.name%></h6>
+          <h6 class="lead text-info my-0">Email : <%= @user.email%></h6>
+          <h6 class="lead text-info my-0">Age : <%= @user.age%></h6>
+          <h6 class="lead text-info my-0">Gender : <%= @user.gender%></h6>
+          <h6 class="lead text-info my-0">Phone : <%= @user.phone%></h6>
+          <h6 class="lead text-info my-0">Gender : <%= @user.gender%></h6>
+          <h6 class="lead text-info my-0">IC : <%= @user.ic%></h6>
+------------------------------------------------------------
+          <p class="lead text-muted my-0">Height : <%= @user.patient.height.present? ?   @user.patient.height : "Please add your height"%> cm</p>
+          <p class="lead text-muted my-0">Weight : <%= @user.patient.weight.present? ?   @user.patient.weight : "Please add your weight"%> kg</p>
+          <p class="lead text-muted my-0">Blood Type : <%= @user.patient.blood_type.present? ?   @user.patient.blood_type : "Please add your blood type"%> type</p>
+          <p class="lead text-muted my-0">Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%></p>
+          <p>
+            <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          </p>
+        </div>
+      </section>
+
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-4 shadow-sm">
+                <div style="border:black 1px solid">
+                     <%= link_to "Diabetes",new_diabete_path(id:@patient.id),remote:true,class:"card-title" %>
+                     <div id="record-input"></div>
+                </div>
+                <div class="card-body">
+                  <p class="card-text">Maybe we can place doctor's notes here? to act as a reminder</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                      <%= link_to "history",diabetes_path(id:@patient),remote:true,class:"btn btn-sm btn-outline-secondary"%>
+                     <!--  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button> -->
+                    </div>
+                    <small class="text-muted">9 mins</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </main>
+
+<!-- This is where your code starts son -->
 <% if @user.id == current_user.id %> 
     <h1><%=  "My Profile: #{@user.name}'s Profile"%></h1>
 <%else%>
@@ -36,3 +113,13 @@
     <%= link_to "Hypertension",new_hypertension_path(id:@patient.id),remote:true %>
 </div>
 <div id="record-input"></div>
+<!-- 
+<footer class="text-muted">
+   <div class="container">
+     <p class="float-right">
+       <a href="#">Back to top</a>
+     </p>
+     <p>Album example is &copy; Bootstrap, but please download and customize it for yourself!</p>
+     <p>New to Bootstrap? <a href="../../">Visit the homepage</a> or read our <a href="../../getting-started/">getting started guide</a>.</p>
+   </div>
+ </footer> -->
