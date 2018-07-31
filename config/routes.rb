@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resources :users,only:[:index]
   resources :patients
   resources :doctors
+  resources :prizes
   
   #Health records routes
   resources :health_records
