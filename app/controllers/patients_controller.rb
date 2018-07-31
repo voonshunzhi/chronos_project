@@ -11,6 +11,21 @@ class PatientsController < ApplicationController
     def show
         @user = Patient.find(params[:id]).user
         @patient = @user.patient
+        byebug
+        if @patient.level == "level basic"
+            @badge = Badge.all[0]
+        elsif @patient.level == "level 1"
+            @badge = Badge.all[1]
+        elsif @patient.level == "level 2"
+            @badge = Badge.all[2]
+        elsif @patient.level == "level 3"
+            @badge = Badge.all[3]
+        elsif @patient.level == "level 4"
+            @badge = Badge.all[4]
+        elsif @patient.level == "level 5"
+            @badge = Badge.all[5]
+        end
+
         # @badge = Badge.all[0]
     end
     
