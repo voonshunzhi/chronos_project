@@ -13,6 +13,7 @@ class HealthRecordDashboard < Administrate::BaseDashboard
     hypertensions: Field::HasMany,
     patient: Field::BelongsTo,
     id: Field::Number,
+    name: NamehrField,
     obese: Field::Boolean,
     diabete: Field::Boolean,
     hypertension: Field::Boolean,
@@ -26,10 +27,10 @@ class HealthRecordDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :name,
     :obeses,
     :diabetes,
     :hypertensions,
-    :patient,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

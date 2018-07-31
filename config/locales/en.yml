@@ -31,3 +31,14 @@
 
 en:
   hello: "Hello world"
+
+en:
+  helpers:
+    label:
+      patient:
+        name: 'Full Name'
+      health_record:
+        name: 'Full Name'
+        obeses: 'Total Obesity Records'
+        diabetes: 'Total Blood Glucose Level Records'
+        hypertensions: 'Total Blood Pressure Records'

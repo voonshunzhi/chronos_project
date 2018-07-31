@@ -30,8 +30,10 @@ class PatientDashboard < Administrate::BaseDashboard
   COLLECTION_ATTRIBUTES = [
     :name,
     :age,
-    :health_record,
-    :id
+    :height,
+    :weight,
+    :points,
+    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
