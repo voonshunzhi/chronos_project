@@ -11,7 +11,9 @@
                 <%= "Blood Glucose Level: #{history.blood_glucose_level}" if history.blood_glucose_level %><br/>
                 <%="Notes : #{history.notes}"  if history.notes? %>
                 Created <%= time_ago_in_words(history.created_at) %> ago by <%= history.hg1ac? ? history.health_record.patient.doctor.user.name : history.health_record.patient.user.name%>
-                <%= link_to "Edit Record", edit_diabete_path(history),remote:true%>
+                <% if current_user.role != "patient"%>
+                    <%= link_to "Edit Record", edit_diabete_path(history),remote:true%>
+                <% end %>
             </div>
             <br/>
         <% end %>

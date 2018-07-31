@@ -35,5 +35,4 @@
     </div>
 <%end%>
 
-
-<%= link_to "press to go history", diabetes_path(id:@patient),remote:true%>
+<%= link_to 'History',diabetes_path(id:@patient),class:"btn btn-primary",data: { toggle: 'modal', target:"#exampleModalCenter" } %>
