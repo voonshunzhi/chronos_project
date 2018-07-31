@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
     
-  namespace :dashboard do
+  namespace :admin do
     resources :patients
     resources :health_records
     resources :diabetes
