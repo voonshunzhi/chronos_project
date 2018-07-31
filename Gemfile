@@ -34,8 +34,6 @@ gem 'autoprefixer-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'carrierwave'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
 gem "d3-rails"
 gem 'administrate'
 
