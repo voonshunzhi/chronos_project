@@ -1,2 +1,3 @@
-$("#points").text(<%= @patient.points%>)
 $('#record-input-hypertensions').hide()
+$("#points").html("<%= j( render "points")%>")
+$('#badge').fadeOut(5000);

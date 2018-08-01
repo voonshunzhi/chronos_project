@@ -33,5 +33,30 @@ class PrizesController < ApplicationController
     	end
 
     end
+
+    def edit
+    	@prize = Prize.find(params[:id])
+    	respond_to do |format|
+    		format.js 
+    	end 
+    end
+
+    def update
+    	@prize = Prize.find(params[:id])
+    	if @prize.update(prizes_params)
+    		flash.now[:success] = "The prize is updated."
+    	else
+    		flash.now[:success] = "The prize is updated."
+    	end
+
+    	respond_to do |format|
+    		format.js { render "superadmins/all_prizes"}
+    	end  
+    end
+
+    private
+    def prizes_params
+    	params.require(:prize).permit(:name,:description,:image)
+    end
 end
 
