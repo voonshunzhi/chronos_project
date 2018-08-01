@@ -111,3 +111,14 @@ pids.length.times do
     Diabete.create(diabete)
 end
 end
+
+prize = {}
+ActiveRecord::Base.transaction do
+15.times do
+    prize['name']=Faker::Food.dish  
+    prize['description'] = Faker::HowIMetYourMother.quote
+    prize['cost'] = rand(30..50)
+    
+    Prize.create(prize)
+end
+end

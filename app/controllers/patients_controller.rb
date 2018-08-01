@@ -24,8 +24,6 @@ class PatientsController < ApplicationController
         elsif @patient.level == "level 5"
             @badge = Badge.all[5]
         end
-
-        # @badge = Badge.all[0]
     end
     
     def edit

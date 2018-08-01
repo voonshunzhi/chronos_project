@@ -24,8 +24,9 @@
             <%= image_tag @badge.image.url, style:"height:10vh"%>
           </p>
           <p>
-            <%= link_to "My Profile",edit_patient_path(form:"user"),class:"btn btn-primary my-2"%>
+            <%= link_to "My Profile",edit_patient_path(form:"user"),class:"btn btn-secondary my-2"%>
             <%= link_to "My Health Profile",edit_patient_path(form:"patient"),class:"btn btn-secondary my-2"%>
+            <%= link_to "Claim my Prize",prizes_path,class:"btn btn-secondary my-2"%>
           </p>
         </div>
       </section>

@@ -42,7 +42,7 @@ class DiabetesController < ApplicationController
 	    @diabete.health_record_id = @patient.health_record.id
 	    if @diabete.save
 	        flash.now[:success] = "Record is successfully created."
-	        @patient.update(points: @patient.points.to_i += 30)
+	        @patient.update(points: @patient.points.to_i + 30)
 	    else
 	        flash.now[:danger] = "Record is not created."
 	    end

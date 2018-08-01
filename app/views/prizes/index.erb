@@ -1,0 +1,35 @@
+<h2>Redeem your points with our prizes</h2>
+
+	<div id="flash">
+      <% flash.each do |key, value| -%>
+        <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%=h value %></div>
+      <% end %>
+    </div>
+
+
+<div class="row">
+	<% @prizes.each do |pa|%>
+		<div class="col-4 mb-4 my-4">
+		 <div class="card" style="width: 18rem;">
+		 <!--  <img class="card-img-top" src="<%image_tag pa.image.url%>" alt="Card image cap"> -->
+			
+		  <div class="card-img-top" alt="Card image cap"><%= image_tag pa.image.url,class:"profile_image border border-light",style:"width:100%"%></div>
+		  <div class="card-body">
+		    <h5 class="card-title"><%=pa.name%></h5>
+		    <p class="card-text"><%=pa.description%></p>
+		  </div>
+		  <ul class="list-group list-group-flush">
+		    <li class="list-group-item">Points needed for redeem: <%=pa.cost%></li>
+		  </ul>
+		  <div class="card-body">
+		  	<div class="btn btn-primary">
+		  		<%= link_to "Redeem Prize",deduct_point_path(pa.id), style:"color:white"%>
+		  	</div>
+		  </div>
+		 </div>
+		</div>
+
+	<%end%>	
+</div>
+
+
