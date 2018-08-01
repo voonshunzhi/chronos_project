@@ -11,7 +11,7 @@
 
   <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Chronos</a>
+    <%= link_to "Chronos",signed_in_root_path,class:"navbar-brand"%>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -40,6 +40,9 @@
         <li class="nav-item" id="signinactive" >
           <% if signed_in? %>
             <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "nav-link btn btn-danger",style:"color:white" %>
+            <% if params[:controller] == 'prizes'%>
+              
+            <%end%>
           <% else -%>
             <% unless params[:controller] == 'clearance/sessions'%>
               <%= link_to t(".sign_in"), sign_in_path, class: "nav-link" %>
