@@ -1,6 +1,9 @@
 <div class="row" style="padding-top:50px">
     <div class="col-md-8 offset-md-2">
         <% if @user%>
+            <div align="center">
+                <%= image_tag @user.avatar.url,style:"width:100px"%>
+            </div>
             <h1 class="text-center">Personal Profile</h1>
             <%= form_for @user,url:patient_path(update:"user"),method: :put,html:{class:"form-horizontal",role:"form"} do |form|%>
               <div class="row">

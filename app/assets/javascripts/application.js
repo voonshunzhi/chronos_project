@@ -22,6 +22,13 @@
 
 $(document).ready(function(){
 
+  $(document).click(function(e){
+    if(!$(e.target).hasClass("card-header") && !$(e.target).parents().hasClass("show")){
+      $(document).find('.show').hide()
+    }
+   })
+  
+
   var button1 = $('#all-diseases')
   var button2 = $('#active-patients')
   var button3 = $('#points')
