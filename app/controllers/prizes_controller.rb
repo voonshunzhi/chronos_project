@@ -46,11 +46,11 @@ class PrizesController < ApplicationController
     	if @prize.update(prizes_params)
     		flash.now[:success] = "The prize is updated."
     	else
-    		flash.now[:success] = "The prize is updated."
+    		flash.now[:danger] = "The prize fails to update."
     	end
-
+    	@prizes = Prize.all
     	respond_to do |format|
-    		format.js { render "superadmins/all_prizes"}
+    		format.js 
     	end  
     end
 
