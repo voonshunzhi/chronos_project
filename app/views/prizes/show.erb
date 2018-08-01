@@ -1,0 +1,21 @@
+<h2>Prizes redeemed :</h2>
+<small>You have redeemed <%= pluralize(@prizes.length,"prize") %></small>
+<div class="row">
+	<% @prizes.each do |pa|%>
+		<div class="col-4 mb-4 my-4">
+		 <div class="card" style="width: 18rem;">
+		  <div class="card-img-top" alt="Card image cap"><%= image_tag pa.image.url,class:"profile_image border border-light",style:"width:100%"%>
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"><%=pa.name%></h5>
+		    <p class="card-text"><%=pa.description%>
+		    <% var = current_user.patient.patient_prizes.find_by_prize_id(pa.id)%>
+		    <div>You redeemed this item <%= time_ago_in_words(var.created_at)%> ago</div>
+		    </p>
+		  </div>
+		
+		 </div>
+		</div>
+
+	<%end%>	
+</div>

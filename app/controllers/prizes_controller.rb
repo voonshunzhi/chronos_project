@@ -21,8 +21,8 @@ class PrizesController < ApplicationController
 	        	@patient.prizes << @prizes
 
 
-            	flash[:success] = "Prize has been redeem!."
-            	redirect_to prizes_path
+            	flash[:success] = "Prize has been redeemed!"
+            	redirect_to prize_path(current_user)
 	        else
 	        	flash[:danger] = "You don't have enough points."
 	        	redirect_to prizes_path
@@ -54,9 +54,14 @@ class PrizesController < ApplicationController
     	end  
     end
 
+    def show
+        @prizes = current_user.patient.prizes
+    end
+    
     private
     def prizes_params
     	params.require(:prize).permit(:name,:description,:image)
-    end
-end
 
+    
+end
+end

@@ -15,6 +15,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require typed
 //= require activestorage
 //= require turbolinks
 //= require_tree .
@@ -128,5 +129,13 @@ $(document).ready(function(){
       },"json")
 
     })
+
+
+    $("#typed-strings").typed({
+      strings:["- Medical Record Apps -","- Point Rewarding -"],
+      loop:true,
+      typeSpeed:50
+    })
+    
 	
 })

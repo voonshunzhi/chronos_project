@@ -28,9 +28,12 @@ html,body{
     height: 100%;
 }
 #background{
+   background: linear-gradient(
+      rgba(255, 255, 255, 0.35), 
+      rgba(255, 255, 255, 0.35)
+    ),
+   url(bg.jpg) no-repeat fixed center;
+   background-size: cover;
     height:100%;
-    background-image: url("bg.jpg");
-    background-repeat:no-repeat;
-    background-position:center;
-    background-size:cover;
 }
+
