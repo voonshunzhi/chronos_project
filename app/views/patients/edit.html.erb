@@ -1,50 +1,96 @@
-<% if @user%>
-    <%= form_for @user,url:patient_path(update:"user"),method: :put do |form|%>
-      <div>
-        <%= form.label :name%>
-        <%= form.text_field :name%>
-    </div>
-      <div>
-        <%= form.label :ic%>
-        <%= form.text_field :ic%>
-    </div>
-      <div>
-        <%= form.label :age%>
-        <%= form.text_field :age%>
-    </div>
-      <div>
-        <%= form.label :gender%>
-        <%= form.text_field :gender%>
-    </div>
-    <div>
-        <%= form.label :phone%>
-        <%= form.text_field :phone%>
-    </div>    
-    <div>
-        <%=form.label :avatar, @user.avatar? ? "Edit photo" : "Upload photo"%>
-        <%=form.file_field :avatar%>
-    </div>
-        <%= form.submit "Update" %>
-    <% end %>
-<% end %>
+<div class="row" style="padding-top:50px">
+    <div class="col-md-8 offset-md-2">
+        <% if @user%>
+            <h1 class="text-center">Personal Profile</h1>
+            <%= form_for @user,url:patient_path(update:"user"),method: :put,html:{class:"form-horizontal",role:"form"} do |form|%>
+              <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :name%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :name,class:"form-control"%>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :ic%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :ic,class:"form-control"%>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :age%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :age,class:"form-control"%>
+                </div>
+            </div>
+              <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :gender%>
+                </div>
+                <div class="col-md-8">
+                     <%= form.text_field :gender,class:"form-control"%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :phone%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :phone,class:"form-control"%>
+                </div>
+            </div>    
+            <div class="row">
+                <div class="col-md-2">
+                    <%=form.label :avatar, @user.avatar? ? "Edit photo" : "Upload photo"%>
+                </div>
+                <div class="col-md-8">
+                    <%=form.file_field :avatar%>
+                </div>
+            </div>
+            <div class="col-md-10 offset-md-2 form-group" style="padding-top: 10px">
+                <%= form.submit "Update",class:"btn btn-warning" %>
+            </div>
+                
+            <% end %>
+        <% end %>
 
-<% if @patient %>
- <%= form_for @patient,url:patient_path(update:"patient"),method: :put do |form|%>
-    <div>
-        <%= form.label :height%>
-        <%= form.text_field :height%>
+        <% if @patient %>
+        <h1 class="text-center">Health Profile</h1>
+         <%= form_for @patient,url:patient_path(update:"patient"),method: :put do |form|%>
+            <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :height%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :height,class:"form-control"%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <%= form.label :weight%>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :weight,class:"form-control"%>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <%= form.label "Blood Type" %>
+                </div>
+                <div class="col-md-8">
+                    <%= form.text_field :blood_type,class:"form-control" %>
+                </div>
+            </div>
+            <div class="col-md-10 offset-md-2" style="padding-top: 10px">
+                <%= form.submit "Update",class:"btn btn-warning" %>
+            </div>
+         <% end %> 
+        <% end %>
     </div>
-    <div>
-        <%= form.label :weight%>
-        <%= form.text_field :weight%>
-    </div>
-    <div>
-        <%= form.label "Blood Type" %>
-        <%= form.text_field :blood_type %>
-    </div>
-    
-    <%= form.submit "Update" %>
+</div>
 
- <% end %> 
-<% end %>
 

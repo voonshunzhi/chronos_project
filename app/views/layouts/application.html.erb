@@ -33,7 +33,7 @@
           <% if !signed_in? && params[:sign_up] == 'patient' %>
             <%= link_to "Sign Up as Doctor", sign_up_path(sign_up:"doctor"), class: "nav-link"%>
           <% elsif !signed_in? %>
-            <%= link_to "Sign Up as Patient", sign_up_path(sign_up:"patient"), class: "nav-link" %>
+            <%= link_to "Sign Up", sign_up_path(sign_up:"patient"), class: "nav-link" %>
           <% end %>
         </li>
 
@@ -41,7 +41,9 @@
           <% if signed_in? %>
             <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "nav-link btn btn-danger",style:"color:white" %>
           <% else -%>
-            <%= link_to t(".sign_in"), sign_in_path, class: "nav-link" %>
+            <% unless params[:controller] == 'clearance/sessions'%>
+              <%= link_to t(".sign_in"), sign_in_path, class: "nav-link" %>
+            <% end %>
           <% end -%>
         </li>
       

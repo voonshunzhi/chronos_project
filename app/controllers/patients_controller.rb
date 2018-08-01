@@ -11,7 +11,6 @@ class PatientsController < ApplicationController
     def show
         @user = Patient.find(params[:id]).user
         @patient = @user.patient
-        byebug
         if @patient.level == "level basic"
             @badge = Badge.all[0]
         elsif @patient.level == "level 1"
@@ -33,7 +32,7 @@ class PatientsController < ApplicationController
         if params[:form] == "user"
             @user = current_user
         elsif params[:form] == "patient"
-            @patient = Patient.find_by_user_id(params[:id])
+            @patient = current_user.patient
         end
     end
     

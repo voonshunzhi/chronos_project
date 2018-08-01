@@ -26,4 +26,4 @@
         <%= content_tag "strong", "You have already made a record today!"%>
     </div>
 <%end%>
-<%= link_to 'History',"#",class:"btn btn-primary",data: { toggle: 'modal', target:"#exampleModalCenter" },onclick:"$(this).fadeOut()"%>
+<%= link_to 'History',"#",class:"btn btn-primary",data: { toggle: 'modal', target:"#exampleModalCenter" },onclick:"$(this).parent().fadeOut()"%>
