@@ -33,5 +33,12 @@ class PrizesController < ApplicationController
     	end
 
     end
+
+    def show
+
+    	@prizes = current_user.patient.prizes
+
+
+    end
 end
 

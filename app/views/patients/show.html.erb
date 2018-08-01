@@ -21,7 +21,7 @@
             <%end%>
           <h6 class="lead text-info my-0">Name : <%= @user.name%></h6>
           <p class="lead text-muted my-0">Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%>
-            <%= image_tag @badge.image.url, style:"height:10vh"%>
+            
           </p>
           <p>
             <%= link_to "My Profile",edit_patient_path(form:"user"),class:"btn btn-secondary my-2"%>

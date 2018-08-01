@@ -1,0 +1,21 @@
+<h2>Prizes you already redeemed</h2>
+
+<div class="row">
+	<% @prizes.each do |pa|%>
+		<div class="col-4 mb-4 my-4">
+		 <div class="card" style="width: 18rem;">
+		 <!--  <img class="card-img-top" src="<%image_tag pa.image.url%>" alt="Card image cap"> -->
+			
+		  <div class="card-img-top" alt="Card image cap"><%= image_tag pa.image.url,class:"profile_image border border-light",style:"width:100%"%>
+		  	
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"><%=pa.name%></h5>
+		    <p class="card-text"><%=pa.description%></p>
+		  </div>
+		
+		 </div>
+		</div>
+
+	<%end%>	
+</div>
