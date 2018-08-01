@@ -4,6 +4,8 @@ class Patient < ApplicationRecord
 	belongs_to :user
 	belongs_to :doctor
 	has_one :health_record
+	has_many :patient_prizes
+	has_many :prizes,through: :patient_prizes
 	# before_save :check_level
 
 	# def check_level
