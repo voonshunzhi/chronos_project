@@ -40,9 +40,6 @@
         <li class="nav-item" id="signinactive" >
           <% if signed_in? %>
             <%= button_to t(".sign_out"), sign_out_path, method: :delete, class: "nav-link btn btn-danger",style:"color:white" %>
-            <% if params[:controller] == 'prizes'%>
-              
-            <%end%>
           <% else -%>
             <% unless params[:controller] == 'clearance/sessions'%>
               <%= link_to t(".sign_in"), sign_in_path, class: "nav-link" %>
