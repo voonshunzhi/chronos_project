@@ -40,7 +40,7 @@ class PatientsController < ApplicationController
             flash[:success] = "Update successful."
             redirect_to patient_path(current_user.patient.id)
         elsif params[:update] == "patient"
-            patient = Patient.find_by_user_id(params[:id])
+            patient = Patient.find(params[:id])
             patient.update(update_params)
             flash[:success] = "Update successful."
             redirect_to patient_path(patient.id)

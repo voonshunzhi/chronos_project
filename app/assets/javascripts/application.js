@@ -26,6 +26,7 @@ $(document).ready(function(){
   $(document).click(function(e){
     if(!$(e.target).hasClass("card-header") && !$(e.target).parents().hasClass("show")){
       $(document).find('.show').hide()
+      $(document).find('#record-input').hide()
     }
    })
   
@@ -131,11 +132,5 @@ $(document).ready(function(){
     })
 
 
-    $("#typed-strings").typed({
-      strings:["- Medical Record Apps -","- Point Rewarding -"],
-      loop:true,
-      typeSpeed:50
-    })
-    
 	
 })
