@@ -1,7 +1,7 @@
 class HypertensionsController < ApplicationController
 	def index
 		patient = Patient.find(params[:id])
-	    @history = patient.health_record.hypertensions.paginate(:page => params[:page], :per_page => 5)
+	    @history = patient.health_record.hypertensions
 	    respond_to do |format|
 	        format.js { render "create" }
 	    end
@@ -11,8 +11,8 @@ class HypertensionsController < ApplicationController
 		# passed in patient.id as a params, to keep track of the patient, instead of current_user.id, to allow doctors to see the histories too.
 		@patient = Patient.find(params[:id])
 	    @hypertension = Hypertension.new
-		@history = @patient.health_record.hypertensions.paginate(:page => params[:page], :per_page => 5)
-	    respond_to do |format|
+		@history = @patient.health_record.hypertensions
+		respond_to do |format|
 	        # format.html { redirect_to root_path }
 	        format.js
 	    end
@@ -30,7 +30,7 @@ class HypertensionsController < ApplicationController
 	        flash[:danger] = "Record is not created."
 	        render "new"
 	    end
-	    @history = @patient.health_record.hypertensions.paginate(:page => params[:page], :per_page => 5)
+	    @history = @patient.health_record.hypertensions
 	    respond_to do |format|
 	        format.js
 	    end

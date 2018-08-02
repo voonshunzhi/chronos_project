@@ -4,8 +4,7 @@ class PagesController < ApplicationController
         @badge = Badge.all[0]
        #Both the doctor and the patient will redirect to different doctor_path, and patient_path, which are show action in respective controllers
         if current_user.role == 'doctor'
-            doctor = Doctor.find_by_user_id(current_user.id)
-            redirect_to doctor_path(doctor.id)
+            redirect_to admin_patients_path
         elsif current_user.role == 'patient'
             patient = Patient.find_by_user_id(current_user.id)
             redirect_to patient_path(patient.id)

@@ -1,7 +1,7 @@
 class DiabetesController < ApplicationController
 	def index
 		@patient = Patient.find(params[:id])
-        @history = @patient.health_record.diabetes.paginate(:page => params[:page], :per_page => 5)
+        @history = @patient.health_record.diabetes
         respond_to do |format|
             format.js { render "create" }
         end
@@ -30,7 +30,7 @@ class DiabetesController < ApplicationController
 		# passed in patient.id as a params, to keep track of the patient, instead of current_user.id, to allow doctors to see the histories too.
 		@patient = Patient.find(params[:id])
 	    @diabete = Diabete.new
-		@history = @patient.health_record.diabetes.paginate(:page => params[:page], :per_page => 5)
+		@history = @patient.health_record.diabetes
 	    respond_to do |format|
 	        format.js 
 	    end
