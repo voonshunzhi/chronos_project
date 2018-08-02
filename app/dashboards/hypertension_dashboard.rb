@@ -10,6 +10,8 @@ class HypertensionDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     health_record: Field::BelongsTo,
     id: Field::Number,
+    blood_pressure: BpField,
+    patient_name: PtnameField,
     SBP: Field::Number.with_options(decimals: 2),
     DBP: Field::Number.with_options(decimals: 2),
     medication: Field::String,
@@ -24,10 +26,10 @@ class HypertensionDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :health_record,
-    :id,
-    :SBP,
-    :DBP,
+    :patient_name,
+    :medication,
+    :blood_pressure,
+    :created_at,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

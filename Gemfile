@@ -34,9 +34,9 @@ gem 'autoprefixer-rails'
 gem 'bootstrap'
 gem 'jquery-rails'
 gem 'carrierwave'
+gem 'kaminari'
 gem "d3-rails"
 gem 'administrate'
-gem "will_paginate"
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'# Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -13,7 +13,11 @@ class HealthRecordDashboard < Administrate::BaseDashboard
     hypertensions: Field::HasMany,
     patient: Field::BelongsTo,
     id: Field::Number,
+    name: NamehrField,
     obese: Field::Boolean,
+    total_weight_records: HrobeseField,
+    total_glucose_records: HrdiabetesField,
+    total_blood_pressure_records: HrhypertensionField,
     diabete: Field::Boolean,
     hypertension: Field::Boolean,
     created_at: Field::DateTime,
@@ -26,10 +30,10 @@ class HealthRecordDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :obeses,
-    :diabetes,
-    :hypertensions,
-    :patient,
+    :name,
+    :total_weight_records,
+    :total_glucose_records,
+    :total_blood_pressure_records,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -40,9 +44,6 @@ class HealthRecordDashboard < Administrate::BaseDashboard
     :hypertensions,
     :patient,
     :id,
-    :obese,
-    :diabete,
-    :hypertension,
     :created_at,
     :updated_at,
   ].freeze
@@ -62,7 +63,7 @@ class HealthRecordDashboard < Administrate::BaseDashboard
 
   # Overwrite this method to customize how health records are displayed
   # across all pages of the admin dashboard.
-  #
+
   # def display_resource(health_record)
   #   "HealthRecord ##{health_record.id}"
   # end
