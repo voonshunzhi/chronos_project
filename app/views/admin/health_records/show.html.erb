@@ -83,6 +83,12 @@ as well as a link to its edit page.
   <% @bmirecords << x.bmi %>
   <% end %>
 ]
+  
+  <% @bgrecords = [] %>
+
+  <% page.resource.diabetes.all.each do |x| %>
+  <% @bgrecords << x.blood_glucose_level %>
+  <% end %>
 <!-- Chart starts here -->
 
 
@@ -92,6 +98,9 @@ as well as a link to its edit page.
 <% end %>
 
 <%= content_tag :div, class: "dbprecords_class", data: {dbprecords: @dbprecords} do %>
+<% end %>
+
+<%= content_tag :div, class: "bgrecords_class", data: {bgrecords: @bgrecords} do %>
 <% end %>
 
 <%= content_tag :div, class: "recordsdate_class", data: {recordsdate: @recordsdate} do %>
@@ -105,6 +114,9 @@ as well as a link to its edit page.
     <dd> <div class="ct-chart ct-perfect-fourth" id="chart1"></div></dd>
     <dt id = "chart2trigger"> Weight Records </dt>
     <dd> <div class="ct-chart ct-perfect-fourth" id="chart2"></dd>
+
+    <dt id = "chart3trigger"> Blood Glucose Records </dt>
+    <dd> <div class="ct-chart ct-perfect-fourth" id="chart3"></dd>
     </div>
  </dd>
   </dl>
@@ -185,56 +197,48 @@ var scene1 = new ScrollMagic.Scene({triggerElement: "#chart1trigger", duration: 
           .addTo(controller1)
           .on('start',function()
             {
-              console.log("HELLO YOu scrolled");
-                var data = {
-  series: [<%= @sbprecords %>, <%= @dbprecords %>]
-};
-var chart1 = new Chartist.Line('#chart1', data);
-// Let's put a sequence number aside so we can use it in the event callbacks
-var seq = 0;
+              var data = {
+                series: [<%= @sbprecords %>, <%= @dbprecords %>]
+              };
+              var chart1 = new Chartist.Line('#chart1', data);
 
-// Once the chart is fully created we reset the sequence
-chart1.on('created', function() {
-  seq = 0;
-});
+              var seq = 0;
 
-chart1.on('draw', function(data) {
-  if(data.type === 'point') {
-    // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
-    data.element.animate({
-      opacity: {
-        // The delay when we like to start the animation
-        begin: seq++ * 80,
-        // Duration of the animation
-        dur: 500,
-        // The value where the animation should start
-        from: 0,
-        // The value where it should end
-        to: 1
-      },
-      x1: {
-        begin: seq++ * 80,
-        dur: 500,
-        from: data.x - 100,
-        to: data.x,
-        // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
-        easing: Chartist.Svg.Easing.easeOutQuint
-      }
-    });
-  }
+              chart1.on('created', function() {
+                seq = 0;
+              });
 
-    if(data.type === 'line' || data.type === 'area') {
-    data.element.animate({
-      d: {
-        begin: 2000 * data.index,
-        dur: 2000,
-        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-        to: data.path.clone().stringify(),
-        easing: Chartist.Svg.Easing.easeOutQuint
-      }
-    });
-  }
-});
+              chart1.on('draw', function(data) {
+                if(data.type === 'point') {
+                  data.element.animate({
+                    opacity: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: 0,
+                      to: 1
+                    },
+                    x1: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: data.x - 100,
+                      to: data.x,
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
+
+                  if(data.type === 'line' || data.type === 'area') {
+                  data.element.animate({
+                    d: {
+                      begin: 2000 * data.index,
+                      dur: 2000,
+                      from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                      to: data.path.clone().stringify(),
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
+              });
 
             });
 
@@ -253,66 +257,106 @@ chart1.on('draw', function(data) {
 
 var controller2 = new ScrollMagic.Controller();
 var scene2 = new ScrollMagic.Scene({triggerElement: "#chart2trigger", duration: 200, reverse:false})
-          .addTo(controller1)
+          .addTo(controller2)
           .on('start',function()
             {
               //Weight Records
 
-  var data = {
-  series: [<%= @bmirecords %>]
-};
-var chart2 = new Chartist.Line('#chart2', data);
-// Let's put a sequence number aside so we can use it in the event callbacks
-var seq = 0;
+              var data = {
+                series: [<%= @bmirecords %>]
+              };
+              var chart2 = new Chartist.Line('#chart2', data);
+              var seq = 0;
 
-// Once the chart is fully created we reset the sequence
-chart2.on('created', function() {
-  seq = 0;
-});
-// On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
-chart2.on('draw', function(data) {
-  if(data.type === 'point') {
-    // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
-    data.element.animate({
-      opacity: {
-        // The delay when we like to start the animation
-        begin: seq++ * 80,
-        // Duration of the animation
-        dur: 500,
-        // The value where the animation should start
-        from: 0,
-        // The value where it should end
-        to: 1
-      },
-      x1: {
-        begin: seq++ * 80,
-        dur: 500,
-        from: data.x - 100,
-        to: data.x,
-        // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
-        easing: Chartist.Svg.Easing.easeOutQuint
-      }
-    });
-  }
+              chart2.on('created', function() {
+                seq = 0;
+              });
 
-    if(data.type === 'line' || data.type === 'area') {
-    data.element.animate({
-      d: {
-        begin: 2000 * data.index,
-        dur: 2000,
-        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-        to: data.path.clone().stringify(),
-        easing: Chartist.Svg.Easing.easeOutQuint
-      }
-    });
-  }
-});
+              chart2.on('draw', function(data) {
+                if(data.type === 'point') {
+                  data.element.animate({
+                    opacity: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: 0,
+                      to: 1
+                    },
+                    x1: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: data.x - 100,
+                      to: data.x,
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
 
-              console.log("HELLO YOu scrolled");
+                  if(data.type === 'line' || data.type === 'area') {
+                  data.element.animate({
+                    d: {
+                      begin: 2000 * data.index,
+                      dur: 2000,
+                      from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                      to: data.path.clone().stringify(),
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
+              });
+
             });
 
 
+var controller3 = new ScrollMagic.Controller();
+var scene3 = new ScrollMagic.Scene({triggerElement: "#chart3trigger", duration: 200, reverse:false})
+          .addTo(controller3)
+          .on('start',function()
+            {
+              //Weight Records
 
+              var data = {
+                series: [<%= @bgrecords %>]
+              };
+              var chart3 = new Chartist.Line('#chart3', data);
+              var seq = 0;
+
+              chart3.on('created', function() {
+                seq = 0;
+              });
+
+              chart3.on('draw', function(data) {
+                if(data.type === 'point') {
+                  data.element.animate({
+                    opacity: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: 0,
+                      to: 1
+                    },
+                    x1: {
+                      begin: seq++ * 80,
+                      dur: 500,
+                      from: data.x - 100,
+                      to: data.x,
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
+
+                  if(data.type === 'line' || data.type === 'area') {
+                  data.element.animate({
+                    d: {
+                      begin: 2000 * data.index,
+                      dur: 2000,
+                      from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+                      to: data.path.clone().stringify(),
+                      easing: Chartist.Svg.Easing.easeOutQuint
+                    }
+                  });
+                }
+              });
+
+            });
 
 
 </script>
