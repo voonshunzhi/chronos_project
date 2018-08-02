@@ -1,13 +1,15 @@
-<div align="center">
-	<h2>Prizes redeemed :</h2>
-	<strong class="badge badge-warning" style="font-size:20px">You have redeemed <%= pluralize(@prizes.length,"prize") %></strong>
+<div>
+	<div align="center" style="padding-bottom:25px">
+		<h2>Prizes redeemed :</h2>
+		<strong class="badge badge-warning" style="font-size:20px">You have redeemed <%= pluralize(@prizes.length,"prize") %></strong>
+	</div>
+	<div id="flash">
+	  <% flash.each do |key, value| -%>
+	    <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%= value %></div>
+	  <% end %>
+	</div>
 </div>
-<div id="flash">
-  <% flash.each do |key, value| -%>
-    <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%= value %></div>
-  <% end %>
-</div>
-<div class="row">
+<div class="row" style="padding-bottom:50px;">
 	<% @prizes.each do |pa|%>
 		<div class="col-4 mb-4 my-4">
 		 <div class="card" style="width: 18rem;">
