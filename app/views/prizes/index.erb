@@ -3,22 +3,24 @@
 	<h2>Redeem prizes:</h2>
 	<strong class="badge badge-warning"style="padding:5px;font-size:20px">You have got : <%= current_user.patient.points%> points</strong>
 </div>
+
 <div id="flash">
   <% flash.each do |key, value| -%>
     <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%= value %></div>
   <% end %>
 </div>
-<div class="row" style="padding-bottom:100px">
+
+<div class="row d-flex justify-content-around" style="padding-bottom:100px">
 	<% @prizes.each do |pa|%>
-		<div class="col-3 mb-4 my-4">
-		 <div class="card" style="width:18rem;">
+		<div class="col-mx-auto mx-1 my-4">
+		 <div class="card bg-gradient-dark text-white" style="width:17rem; ">
 		  <div class="card-img-top" alt="Card image cap"><%= image_tag pa.image.url,class:"profile_image border border-light",style:"width:100%;height:250px;"%></div>
 		  <div class="card-body">
 		    <h5 class="card-title"><%=pa.name%></h5>
 		    <p class="card-text" style="height:100px"><%=truncate(pa.description, :length => 70)%></p>
 		  </div>
 		  <ul class="list-group list-group-flush">
-		    <li class="list-group-item">Points needed for redeem: <%=pa.cost%></li>
+		    <li class="list-group-item bg-dark text-white">Points needed for redeem: <%=pa.cost%></li>
 		  </ul>
 		  <div class="card-body">
 		  	<div class="btn btn-primary">
