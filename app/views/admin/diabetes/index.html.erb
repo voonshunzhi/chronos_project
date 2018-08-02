@@ -22,10 +22,9 @@ It renders the `_table` partial to display details about the resources.
 
 [1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Collection
 %>
-  <link rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css"
-  integrity="sha384-OHBBOqpYHNsIqQy8hL1U+8OXf9hH6QRxi0+EODezv82DfnZoV7qoHAZDwMwEJvSw"
-  crossorigin="anonymous">
+
+
+
 <% content_for(:title) do %>
   <%= display_resource_name(page.resource_name) %>
 <% end %>
@@ -65,4 +64,8 @@ It renders the `_table` partial to display details about the resources.
 
   <%= paginate resources %>
 
+  <div class = "row">
+  <div style="width:500px" class="ct-chart col-md-5 offset-md-1 ct-perfect-fourth" id="chart"></div>
+  </div>
 </section>
+
