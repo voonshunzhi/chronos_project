@@ -25,8 +25,8 @@ $(document).ready(function(){
 
   $(document).click(function(e){
     if(!$(e.target).hasClass("card-header") && !$(e.target).parents().hasClass("show")){
-      $(document).find('.show').fadeOut(100)
-      $(document).find('#record-input').fadeOut(100)
+      $(document).find('.show').fadeOut(250)
+      $(document).find('#record-input').fadeOut(250)
     }
    })
   
