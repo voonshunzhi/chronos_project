@@ -1,12 +1,12 @@
 <%= form_for :session, url: session_path,class:"form-horizontal" do |form| %>
     <div class="text-field">
       <%= form.label :email %>
-      <%= form.text_field :email, type: 'email', class: 'form-control'%>
+      <%= form.text_field :email, type: 'email', class: 'form-control shadow'%>
     </div>
 
     <div class="password-field mt-2">
       <%= form.label :password %>
-      <%= form.password_field :password, class: 'form-control'%>
+      <%= form.password_field :password, class: 'form-control shadow'%>
     </div>
 
     <div class="submit-field">
