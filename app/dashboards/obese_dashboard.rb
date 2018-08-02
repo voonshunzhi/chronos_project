@@ -37,16 +37,16 @@ class ObeseDashboard < Administrate::BaseDashboard
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :health_record,
+    :patient_name,
     :id,
     :bmi,
     :waist_circumference,
     :notes,
     :medication,
-    :created_at,
-    :updated_at,
     :weight,
     :height,
+    :created_at,
+    :updated_at,
   ].freeze
 
   # FORM_ATTRIBUTES

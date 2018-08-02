@@ -72,7 +72,6 @@ as well as a link to its edit page.
   <% page.resource.hypertensions.all.each do |x| %>
   <% @dbprecords << x.DBP %>
   <% end %>
-  <%= @dbprecords %>
   
 
   <% @recordsdate = [] %>
@@ -88,7 +87,7 @@ as well as a link to its edit page.
   <% page.resource.obeses.all.each do |x| %>
   <% @bmirecords << x.bmi %>
   <% end %>
-]
+
   
   <% @bgrecords = [] %>
 
@@ -114,12 +113,12 @@ as well as a link to its edit page.
 
 <div>
   <dl>
-    <dt id ="chart1trigger"> Blood Pressure </dt>
+    <dt id ="chart1trigger"> Blood Pressure Trend </dt>
     <dd> <div class="ct-chart ct-perfect-fourth" id="chart1"></div></dd>
-    <dt id = "chart2trigger"> Weight Records </dt>
+    <dt id = "chart2trigger"> Weight Records Trend </dt>
     <dd> <div class="ct-chart ct-perfect-fourth ct-series-colors" id="chart2"></dd>
 
-    <dt id = "chart3trigger"> Blood Glucose Records </dt>
+    <dt id = "chart3trigger"> Blood Glucose Records Trend</dt>
     <dd> <div class="ct-chart ct-perfect-fourth" id="chart3"></dd>
     </div>
  </dd>

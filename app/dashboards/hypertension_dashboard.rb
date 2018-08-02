@@ -37,8 +37,7 @@ class HypertensionDashboard < Administrate::BaseDashboard
   SHOW_PAGE_ATTRIBUTES = [
     :health_record,
     :id,
-    :SBP,
-    :DBP,
+    :blood_pressure,
     :medication,
     :notes,
     :created_at,
