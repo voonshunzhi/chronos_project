@@ -1,10 +1,10 @@
 
-    <main role="main" >
+    <main role="main">
       <div class="container">
-        <section class="jumbotron text-center bg-light" id="background">
+        <section class="jumbotron text-center bg-light" id="background" >
               <div><%= image_tag @user.avatar.url,class:"profile_image border border-light",style:"width:200px"%></div>
               <% if @user.id == current_user.id %> 
-                  <h1 class="jumbotron-heading"><%=  "- My Profile - "%></h1>
+                  <h1 class="jumbotron-heading" style="font-family: 'Montserrat'"><%=  "- My Profile - "%></h1>
               <%else%>
                   <h1 class="jumbotron-heading"><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
               <%end%>
@@ -21,8 +21,8 @@
         </section>
         <div class="row" align="center" style="padding-bottom:100px">
             <div class="col-md-12" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
-              <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer" >
-                <div class="card-header"><h2><%= link_to "Obesity",new_obese_path(id:@patient.id),remote:true%></h2>
+              <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer" >
+                <div class="card-header"><h2><%= link_to "Body Weight",new_obese_path(id:@patient.id),remote:true%></h2>
                   <div><small>Start making a record today!</small></div>
                   <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
                   <p id="record-input-obeses" class="show"></p>
@@ -30,8 +30,8 @@
               </div>
             </div>
           <div class="col-md-6" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
-            <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer">
-                  <div class="card-header"><h2><%= link_to "Diabetes",new_diabete_path(id:@patient.id),remote:true%></h2>
+            <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer">
+                  <div class="card-header"><h2><%= link_to "Blood Glucose Level",new_diabete_path(id:@patient.id),remote:true%></h2>
                     <div><small>Start making a record today!</small></div>
                     <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
                   <p id="record-input-diabetes" class="show"></p>
@@ -39,8 +39,8 @@
             </div>
           </div>
           <div class="col-md-6" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
-            <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer">
-                <div class="card-header"><h2><%= link_to "Hypertension",new_hypertension_path(id:@patient.id),remote:true%></h2>
+            <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer">
+                <div class="card-header"><h2><%= link_to "Blood Pressure",new_hypertension_path(id:@patient.id),remote:true%></h2>
                 <div><small>Start making a record today!</small></div>
                 <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
                 <p id="record-input-hypertensions" class="show"></p>
