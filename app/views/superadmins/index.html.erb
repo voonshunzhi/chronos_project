@@ -21,6 +21,9 @@
               <li class="nav-item">
                 <%= link_to "Badges",badges_path,class:"nav-link",remote:true%>
               </li>
+              <li class="nav-item">
+                <%= link_to "Prizes",admin_prizes_index_path,class:"nav-link",remote:true%>
+              </li>
             </ul>
 
             <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
@@ -45,7 +48,7 @@
 
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
           <h2 id="admin-show-text"></h2>
-          <div id="admin-show-all">
+          <div id="admin-show-all" style="padding-bottom:50px">
             <div class="row">
               <div class="col-md-11 col-md-offset-1">
                 <button class="btn btn-primary" style="margin:5px" id="all-diseases">All users</button>

@@ -1,28 +1,50 @@
 <%= form.fields_for :info do |i| %>
-  <div class="text-field mt-2">
-    <%= i.label "Email:" %>
-    <%= i.text_field :email, type: 'email',autofocus:true, class: 'form-control' %>
+<div class="text-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label "Email:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.text_field :email, type: 'email',autofocus:true, class: 'form-control' %>
+    </div>
   </div>
-  <div class="password-field mt-2">
-    <%= i.label "Password:" %>
-    <%= i.password_field :password, class: 'form-control'%>
+  <div class="password-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label "Password:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.password_field :password, class: 'form-control'%>
+    </div>
   </div>
-  <div class="text-field mt-2">
-    <%= i.label "Name:" %>
-    <%= i.text_field :name, class: 'form-control' %>
+  <div class="text-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label "Name:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.text_field :name, class: 'form-control' %>
+    </div>
   </div>
-  <div class="text-field mt-2">
-    <%= i.label "Age:" %>
-    <%= i.text_field :age, class: 'form-control' %>
+  <div class="text-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label "Age:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.text_field :age, class: 'form-control' %>
+    </div>
   </div>
-  <div class="text-field mt-2">
-    <%= i.label :ic, "I/C Number:" %>
-    <%= i.text_field :ic, class: 'form-control'%>
+  <div class="text-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label :ic, "I/C Number:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.text_field :ic, class: 'form-control'%>
+    </div>
   </div>
-  <div class="radio-button mt-2">
-    <%= i.label "Gender:" %>
-    <br>
-    <div class="d-flex justify-content-around">
+  <div class="radio-button mt-2 row">
+    <div class="col-md-3">
+      <%= i.label "Gender:" %>
+    </div>
+    <div class="col-md-9">
+      <div class="d-flex justify-content-around">
       <div>
         <%= i.radio_button :gender, 'Male', :checked => true %>
         <%= i.label :gender, "Male" %>
@@ -39,19 +61,28 @@
       </div>
       
     </div>
+    </div>
   </div>
-  <div class="text-field mt-2">
-    <%= i.label :phone, "Phone Number:" %>
-    <%= i.text_field :phone, class: 'form-control'%>
+  <div class="text-field mt-2 row">
+    <div class="col-md-3">
+      <%= i.label :phone, "Phone Number:" %>
+    </div>
+    <div class="col-md-9">
+      <%= i.text_field :phone, class: 'form-control'%>
+    </div>
   </div>
 <% end %>
 
 <!--Doctor won't see this verification code when they sign up-->
 <% unless params[:sign_up] == "doctor"%>
   <%= form.fields_for :verification do |v| %>
-        <div class="text-field mt-3 d-flex justify-content-center">
+        <div class="text-field mt-3 d-flex justify-content-center row">
+          <div class="col-md-3">
           <%= v.label "Verification Code:" %>
-          <%= v.text_field :vcode, class: ' ml-3 form-control w-50'%>
+        </div>
+        <div class="col-md-9">
+          <%= v.text_field :vcode, class: 'form-control'%>
+        </div>
         </div>
   <% end %>
 <% end %>

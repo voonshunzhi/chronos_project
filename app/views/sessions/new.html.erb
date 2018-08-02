@@ -1,10 +1,64 @@
-<div class="d-flex justify-content-center">
-	<div class="card p-5 col-md-6 col-lg-4 col-10">
-		<div id="clearance" class="sign-in animated fadeIn">
-		  <h2><%= t(".title") %></h2>
 
-		  <%= render partial: '/sessions/form' %>
+<div id="background" style="position:relative;">
+	<% if params[:sign_in] == "true"%>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="col-md-8 offset-md-2">
+					<div class="card  mb-3" style="width:25rem;margin-top:25%;">
+					  <div class="card-body text-dark">
+						    <h2 class="card-title">Sign In</h2>
+						    <p class="card-text">
+						    	<div id="clearance" class="sign-in animated fadeIn">
+								  <%= render partial: '/sessions/form' %>
+								</div>
+						    </p>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="col-md-8">
+					<div style="width:32rem;margin-top:25%;background-color: transparent;">
+					  <div class="card-body text-dark">
+					    <h3 class="card-title badge badge-danger" id="getstarted" style="font-size:30px;"></h3>
+					    <p class="card-text">
+					    	<div style="font-family: 'Do Hyeon', sans-serif;font-size:22px;padding:5px"> 
+					    		<%= image_tag "tick.png",style:"width:30px"%> Sign Up with verification code given by doctor</div>
+					    	<div style="font-family: 'Do Hyeon', sans-serif;font-size:22px;padding:5px"> <%= image_tag "tick.png",style:"width:30px"%> Make a record everyday! </div>
+					    	<div style="font-family: 'Do Hyeon', sans-serif;font-size:22px;padding:5px"> <%= image_tag "tick.png",style:"width:30px"%> Get points for every record! </div>
+					    	<div style="font-family: 'Do Hyeon', sans-serif;font-size:22px;padding:5px"> <%= image_tag "tick.png",style:"width:30px"%> Redeem your prizes with your points!</div>
+					    </p>
+					  </div>
+					</div>
+				</div>
+			</div>
+		</div>	
+		
+	<%else%>
 
+		<div>
+			<h1 style="position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);color:black">Chronos</h1>
+			<h2 id="typed-strings" style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:black"></h2>
+
+			<div style="position:absolute;top:60%;left:50%;transform:translate(-50%,-50%);">
+				<%= link_to "Sign-in",sign_in_path(sign_in:"true"),class:"btn btn-danger btn-large"%>
+			</div>
 		</div>
-	</div>
+	 
+	<%end%>
 </div>
+<script type="text/javascript">
+
+$("#getstarted").typed({
+      strings:["Get started today!"],
+      typeSpeed:50,
+      loop:true
+    })
+
+    $("#typed-strings").typed({
+      strings:["- Medical Record App -","- Point Rewarding App-"],
+      loop:true,
+      typeSpeed:50
+    })
+    
+</script>

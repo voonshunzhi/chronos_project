@@ -15,12 +15,21 @@
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require typed
 //= require activestorage
 //= require turbolinks
 //= require_tree .
 
 
 $(document).ready(function(){
+
+  $(document).click(function(e){
+    if(!$(e.target).hasClass("card-header") && !$(e.target).parents().hasClass("show")){
+      $(document).find('.show').fadeOut(250)
+      $(document).find('#record-input').fadeOut(250)
+    }
+   })
+  
 
   var button1 = $('#all-diseases')
   var button2 = $('#active-patients')
@@ -121,5 +130,7 @@ $(document).ready(function(){
       },"json")
 
     })
+
+
 	
 })

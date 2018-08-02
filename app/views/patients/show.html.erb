@@ -1,121 +1,59 @@
-<h1>This is show in patient controller</h1>
-<!-- <#%=image_tag @badge.image%> -->
-<!-- This is where bootstrap starts son -->
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Chronos</title>
-  </head>
 
-  <body>
-    <main role="main">
-    <div class="container">
-      <section class="jumbotron text-center bg-light">
-        <div class="container">
-            <div><%= image_tag @user.avatar.url,class:"profile_image border border-light",style:"width:200px"%></div>
-            <% if @user.id == current_user.id %> 
-                <h1 class="jumbotron-heading"><%=  "- My Profile - "%></h1>
-            <%else%>
-                <h1 class="jumbotron-heading"><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
-            <%end%>
-          <h6 class="lead text-info my-0">Name : <%= @user.name%></h6>
-          <h6 class="lead text-info my-0">Email : <%= @user.email%></h6>
-          <h6 class="lead text-info my-0">Age : <%= @user.age%></h6>
-          <h6 class="lead text-info my-0">Gender : <%= @user.gender%></h6>
-          <h6 class="lead text-info my-0">Phone : <%= @user.phone%></h6>
-          <h6 class="lead text-info my-0">Gender : <%= @user.gender%></h6>
-          <h6 class="lead text-info my-0">IC : <%= @user.ic%></h6>
-------------------------------------------------------------
-          <p class="lead text-muted my-0">Height : <%= @user.patient.height.present? ?   @user.patient.height : "Please add your height"%> cm</p>
-          <p class="lead text-muted my-0">Weight : <%= @user.patient.weight.present? ?   @user.patient.weight : "Please add your weight"%> kg</p>
-          <p class="lead text-muted my-0">Blood Type : <%= @user.patient.blood_type.present? ?   @user.patient.blood_type : "Please add your blood type"%> type</p>
-          <p class="lead text-muted my-0">Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%></p>
-          <p>
-            <a href="#" class="btn btn-primary my-2">Main call to action</a>
-            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-          </p>
-        </div>
-      </section>
-      <div class="row">
-          <div class="col-md-4">
-            <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-              <div class="card-header"><%= link_to "Obeses",new_obese_path(id:@patient.id),remote:true %></div>
-              <div class="card-body">
-                <h5 class="card-title">Warning card title</h5>
-                <p id="record-input-obeses">Maybe we can place doctor's notes here? to act as a reminder</p>
+    <main role="main" >
+      <div class="container">
+        <section class="jumbotron text-center bg-light" id="background">
+              <div><%= image_tag @user.avatar.url,class:"profile_image border border-light",style:"width:200px"%></div>
+              <% if @user.id == current_user.id %> 
+                  <h1 class="jumbotron-heading"><%=  "- My Profile - "%></h1>
+              <%else%>
+                  <h1 class="jumbotron-heading"><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
+              <%end%>
+            <h6 class="lead text-info my-0 badge badge-warning" style="font-size:20px">Name : <%= @user.name%></h6>
+            <p class="lead text-muted my-0 badge badge-warning" style="font-size:20px">Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%>
+              
+            </p>
+            <p>
+              <%= link_to "My Profile",edit_patient_path(form:"user"),class:"btn btn-secondary my-2"%>
+              <%= link_to "My Health Profile",edit_patient_path(form:"patient"),class:"btn btn-secondary my-2"%>
+              <%= link_to "Claim my Prize",prizes_path,class:"btn btn-secondary my-2"%>
+            </p>
+          </div>
+        </section>
+        <div class="row" align="center" style="padding-bottom:100px">
+            <div class="col-md-12" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
+              <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer" >
+                <div class="card-header"><h2><%= link_to "Obesity",new_obese_path(id:@patient.id),remote:true%></h2>
+                  <div><small>Start making a record today!</small></div>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                  <p id="record-input-obeses" class="show"></p>
+                </div>
               </div>
+            </div>
+          <div class="col-md-6" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
+            <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer">
+                  <div class="card-header"><h2><%= link_to "Diabetes",new_diabete_path(id:@patient.id),remote:true%></h2>
+                    <div><small>Start making a record today!</small></div>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                  <p id="record-input-diabetes" class="show"></p>
+                </div>
             </div>
           </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-              <div class="card-header"><%= link_to "Diabetes",new_diabete_path(id:@patient.id),remote:true%></div>
-              <div class="card-body">
-                <h5 class="card-title">Warning card title</h5>
-                <p id="record-input-diabetes">Maybe we can place doctor's notes here? to act as a reminder</p>
+          <div class="col-md-6" onclick="$(this).siblings().find('.show').fadeOut(1000);$(this).find('.show').show()">
+            <div class="card text-white bg-warning mb-3" style="max-width: 30rem;cursor:pointer">
+                <div class="card-header"><h2><%= link_to "Hypertension",new_hypertension_path(id:@patient.id),remote:true%></h2>
+                <div><small>Start making a record today!</small></div>
+                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                <p id="record-input-hypertensions" class="show"></p>
+                </div>
               </div>
-            </div>
+          </div>
         </div>
-        <div class="col-md-4">
-          <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
-              <div class="card-header"><%= link_to "Hypertension",new_hypertension_path(id:@patient.id),remote:true %></div>
-              <div class="card-body">
-                <h5 class="card-title">Warning card title</h5>
-                <p id="record-input-hypertensions">Maybe we can place doctor's notes here? to act as a reminder</p>
-              </div>
-            </div>
         </div>
-      </div>
-      </div>
-      </div>
+      
     </main>
-
-<!-- This is where your code starts son -->
-<% if @user.id == current_user.id %> 
-    <h1><%=  "My Profile: #{@user.name}'s Profile"%></h1>
-<%else%>
-    <h1><%="This is the profile of your patient, #{@patient.user.name}!"%></h1>
-<%end%>
-<div>
-    <div><%= image_tag @user.avatar.url,class:"profile_image",style:"width:200px"%></div>
-    <div style="border:1px black solid;width:50%">
-        <div>Name : <%= @user.name%></div>
-        <div>IC : <%= @user.ic%></div>
-        <div>Age : <%= @user.age%></div>
-        <div>Gender : <%= @user.gender%></div>
-        <div>Phone : <%= @user.phone%></div>
-        <div>Email : <%= @user.email%></div>
-        <% if current_user.role == "patient" %>
-        <div><%= link_to "Update Personal Profile",edit_patient_path(id:current_user,form:"user")%></div>
-        <% end %>
-    </div>
-    <div>Height : <%= @user.patient.height.present? ?   @user.patient.height : "Please add your height"%> cm</div>
-    <div>Weight : <%= @user.patient.weight.present? ?   @user.patient.weight : "Please add your weight"%> kg</div>
-    <div>Blood Type : <%= @user.patient.blood_type.present? ?   @user.patient.blood_type : "Please add your blood type"%> type</div>
+      <div id="record-input" style="display:none"></div>
+    
 
 
-    <div><%= link_to "Update Health Profile",edit_patient_path(id:@user,form:"patient")%></div>
 
-
-    <div>Points of Achievement : <%= content_tag "span",@user.patient.points.present? ?   @user.patient.points : "No points yet.",id:"points"%></div>
-</div>
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div id="record-input">
-      </div>
-    </div>
-  </div>
-</div>
+    

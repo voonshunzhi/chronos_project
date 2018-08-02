@@ -29,7 +29,7 @@ class UsersController < Clearance::UsersController
         if Doctor.found_doctor?(@verification_code)
             @user = User.new(user_params[:info])
             if @user.save
-              @patient = Patient.create(user:@user,doctor: Doctor.doctor_found(@verification_code))
+              @patient = Patient.create(user:@user,doctor: Doctor.doctor_found(@verification_code),points:0)
               @health_record = HealthRecord.create(patient:@patient)
               sign_in @user
               redirect_back_or url_after_create

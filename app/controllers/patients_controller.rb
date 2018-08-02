@@ -11,14 +11,26 @@ class PatientsController < ApplicationController
     def show
         @user = Patient.find(params[:id]).user
         @patient = @user.patient
-        # @badge = Badge.all[0]
+        if @patient.level == "level basic"
+            @badge = Badge.all[0]
+        elsif @patient.level == "level 1"
+            @badge = Badge.all[1]
+        elsif @patient.level == "level 2"
+            @badge = Badge.all[2]
+        elsif @patient.level == "level 3"
+            @badge = Badge.all[3]
+        elsif @patient.level == "level 4"
+            @badge = Badge.all[4]
+        elsif @patient.level == "level 5"
+            @badge = Badge.all[5]
+        end
     end
     
     def edit
         if params[:form] == "user"
             @user = current_user
         elsif params[:form] == "patient"
-            @patient = Patient.find_by_user_id(params[:id])
+            @patient = current_user.patient
         end
     end
     
@@ -28,7 +40,7 @@ class PatientsController < ApplicationController
             flash[:success] = "Update successful."
             redirect_to patient_path(current_user.patient.id)
         elsif params[:update] == "patient"
-            patient = Patient.find_by_user_id(params[:id])
+            patient = Patient.find(params[:id])
             patient.update(update_params)
             flash[:success] = "Update successful."
             redirect_to patient_path(patient.id)

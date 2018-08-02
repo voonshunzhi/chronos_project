@@ -34,4 +34,11 @@ class SuperadminsController < ApplicationController
     end
   end
 
+  def all_prizes
+    @prizes = Prize.all
+    respond_to do |format|
+      format.js
+    end
+  end
+
 end
