@@ -5,9 +5,8 @@ class Patient < ApplicationRecord
 	belongs_to :doctor
 	has_one :health_record
 	before_save :check_level
-	has_many :patient_prizes
+	has_many :patient_prizes,:dependent => :destroy
 	has_many :prizes,through: :patient_prizes
-	# before_save :check_level
 
 	def check_level
 		if self.points>=200

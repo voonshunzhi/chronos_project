@@ -1,7 +1,7 @@
 <div class="container" style="margin-bottom:100px">
     <div id="background">
         <div id="hypertension-record" class="container" style="padding-bottom:100px">
-            <h3>Hypertension's record : <small id="modal-title"></small ></h3>
+            <h3 style="padding-top:10px"><strong>Hypertension's record : <small id="modal-title"></small ></strong></h3>
             <div id="flash">
               <% flash.each do |key, value| -%>
                 <div id="flash_<%= key %>" class="alert alert-<%=key%> d-flex justify-content-center" ><%= value %></div>
@@ -23,10 +23,10 @@
                                 
                                     <% @history.each do |history|%>
                                     <tr>
-                                        <td>SBP :<%= history.SBP %></td>
-                                        <td>DBP :<%= history.DBP %></td>
-                                        <td>Notes :<%= history.notes %></td>
-                                        <td>Medication :<%= history.medication %></td>
+                                        <td><%= history.SBP %></td>
+                                        <td><%= history.DBP %></td>
+                                        <td><%= history.notes %></td>
+                                        <td><%= history.medication? ? history.medication : "-----" %></td>
                                         <td><%= time_ago_in_words(history.created_at)%> ago</td>
                                         <td><span class="badge badge-warning">+30</td>
                                     </tr>

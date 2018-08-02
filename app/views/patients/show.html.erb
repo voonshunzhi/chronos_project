@@ -26,7 +26,10 @@
               <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer" >
                 <div class="card-header"><h2><%= link_to "Body Weight",new_obese_path(id:@patient.id),remote:true%></h2>
                   <div><small>Start making a record today!</small></div>
-                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                  <p>
+                  <div><%= image_tag "obese.jpg",style:"width:75%"%></div>
+                  <br>
+                  Underweight: BMI is less than 18.5. Normal weight: BMI is 18.5 to 24.9. Overweight: BMI is 25 to 29.9. Obese: BMI is 30 or more.</p>
                   <p id="record-input-obeses" class="show"></p>
                 </div>
               </div>
@@ -35,7 +38,10 @@
             <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer">
                   <div class="card-header"><h2><%= link_to "Blood Glucose Level",new_diabete_path(id:@patient.id),remote:true%></h2>
                     <div><small>Start making a record today!</small></div>
-                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                    <p>
+                      <div><%= image_tag "diabete.jpg",style:"width:75%"%></div>
+                      <br>
+                     For the majority of healthy individuals, normal blood sugar levels are as follows: Between 4.0 to 5.4 mmol/L (72 to 99 mg/dL) when fasting. Up to 7.8 mmol/L (140 mg/dL) 2 hours after eating.</p>
                   <p id="record-input-diabetes" class="show"></p>
                 </div>
             </div>
@@ -44,7 +50,10 @@
             <div class="card text-white bg-dark mb-3" style="max-width: 30rem;cursor:pointer">
                 <div class="card-header"><h2><%= link_to "Blood Pressure",new_hypertension_path(id:@patient.id),remote:true%></h2>
                 <div><small>Start making a record today!</small></div>
-                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
+                <p>
+                <div><%= image_tag "hypertension.jpg",style:"width:75%;"%></div>
+                <br>
+                A normal reading would be any blood pressure below 120/80 mm Hg and above 90/60 mm Hg in an adult.</p>
                 <p id="record-input-hypertensions" class="show"></p>
                 </div>
               </div>
