@@ -80,6 +80,16 @@ class PrizesController < ApplicationController
         end
     end
 
+    def destroy
+        @prize = Prize.find(params[:id])
+        @prize.destroy
+        flash.now[:success] = "Prize is successfully deleted."
+        @prizes = Prize.all
+        respond_to do |format|
+          format.js { render "update"}
+        end
+    end
+
     private
     def prizes_params
     	params.require(:prize).permit(:name,:description,:image)

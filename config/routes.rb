@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   delete "/sign_out" => "clearance/sessions#destroy", as: "sign_out"
   get "sign_up" => "users#new", as: "sign_up"
   get "superadmin" => "superadmins#index"
-  get "admin/obeses" => "obeses#admin_index",as: "obeses_admin_index"
+  get "superadmin/obeses" => "obeses#admin_index",as: "obeses_admin_index"
   get "superadmin/diabetes" => "diabetes#admin_index",as: "diabetes_admin_index"
   get "superadmin/hypertensions" => "hypertensions#admin_index",as: "hypertensions_admin_index"
   get "admin/all_users" => "superadmins#all_users"
