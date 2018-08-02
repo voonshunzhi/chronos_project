@@ -9,13 +9,15 @@ class DiabeteDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     health_record: Field::BelongsTo,
+    patient_name: PtnameField,
     id: Field::Number,
     fasting_blood_glucose: Field::Number.with_options(decimals: 2),
     hg1ac: Field::Number.with_options(decimals: 2),
     meal: Field::Number,
-    blood_glucose_level: Field::Number.with_options(decimals: 2),
+    blood_glucose_level: Field::Number.with_options(decimals: 2, suffix: 'mmol/L'),
     medication: Field::String,
     notes: Field::String,
+    hba1c: Hba1cField,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
   }.freeze
@@ -26,10 +28,12 @@ class DiabeteDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :health_record,
-    :id,
-    :fasting_blood_glucose,
-    :hg1ac,
+    :patient_name,
+    :medication,
+    :hba1c,
+    :blood_glucose_level,
+    :updated_at,
+
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES

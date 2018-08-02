@@ -1,0 +1,318 @@
+<%#
+# Show
+
+This view is the template for the show page.
+It renders the attributes of a resource,
+as well as a link to its edit page.
+
+## Local variables:
+
+- `page`:
+  An instance of [Administrate::Page::Show][1].
+  Contains methods for accessing the resource to be displayed on the page,
+  as well as helpers for describing how each attribute of the resource
+  should be displayed.
+
+[1]: http://www.rubydoc.info/gems/administrate/Administrate/Page/Show
+%>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/ScrollMagic.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ScrollMagic/2.0.5/plugins/debug.addIndicators.min.js"></script>
+
+<link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
+
+
+
+<% content_for(:title) { t("administrate.actions.show_resource", name: page.page_title) } %>
+
+<header class="main-content__header" role="banner">
+  <h1 class="main-content__page-title">
+    <%= content_for(:title) %>
+  </h1>
+
+  <div>
+    <%= link_to(
+      t("administrate.actions.edit_resource", name: page.page_title),
+      [:edit, namespace, page.resource],
+      class: "button",
+    ) if valid_action?(:edit) && show_action?(:edit, page.resource) %>
+  </div>
+</header>
+
+<section class="main-content__body">
+  <dl>
+    <% page.attributes.each do |attribute| %>
+      <dt class="attribute-label" id="<%= attribute.name %>">
+      <%= t(
+        "helpers.label.#{resource_name}.#{attribute.name}",
+        default: attribute.name.titleize,
+      ) %>
+      </dt>
+
+      <dd class="attribute-data attribute-data--<%=attribute.html_class%>"
+          ><%= render_field attribute %></dd>
+    <% end %>
+  </dl>
+  <% @sbprecords = [] %>
+  <% @dbprecords = [] %>
+
+  <% page.resource.hypertensions.all.each do |x| %>
+  <% @sbprecords << x.SBP %>
+  <% end %>
+
+  <% page.resource.hypertensions.all.each do |x| %>
+  <% @dbprecords << x.DBP %>
+  <% end %>
+  <%= @dbprecords %>
+  
+
+  <% @recordsdate = [] %>
+
+  <% page.resource.hypertensions.all.each do |x| %>
+  <% @recordsdate << x %>
+  <% end %>
+
+
+
+  <% @bmirecords = [] %>
+
+  <% page.resource.obeses.all.each do |x| %>
+  <% @bmirecords << x.bmi %>
+  <% end %>
+]
+<!-- Chart starts here -->
+
+
+
+
+<%= content_tag :div, class: "sbprecords_class", data: {sbprecords: @sbprecords} do %>
+<% end %>
+
+<%= content_tag :div, class: "dbprecords_class", data: {dbprecords: @dbprecords} do %>
+<% end %>
+
+<%= content_tag :div, class: "recordsdate_class", data: {recordsdate: @recordsdate} do %>
+<% end %>
+
+<div>
+  <dl>
+    <dt>Test</dt>
+    <dd> The descriptions </dd>
+    <dt id ="chart1trigger"> Blood Pressure </dt>
+    <dd> <div class="ct-chart ct-perfect-fourth" id="chart1"></div></dd>
+    <dt id = "chart2trigger"> Weight Records </dt>
+    <dd> <div class="ct-chart ct-perfect-fourth" id="chart2"></dd>
+    </div>
+ </dd>
+  </dl>
+</div>
+</section>
+
+
+
+<script>
+
+// //Blood pressure
+
+//   var data = {
+//   series: [<%= @sbprecords %>, <%= @dbprecords %>]
+// };
+// var chart1 = new Chartist.Line('#chart1', data);
+// // Let's put a sequence number aside so we can use it in the event callbacks
+// var seq = 0;
+
+// // Once the chart is fully created we reset the sequence
+// chart1.on('created', function() {
+//   seq = 0;
+// });
+
+
+// var controller1 = new ScrollMagic.Controller();
+// var scene1 = new ScrollMagic.Scene({triggerElement: "#chart1trigger", duration: 200, reverse:false})
+//           .addTo(controller1)
+//           .on('start',function()
+//             {
+//               chart1.update();
+//               console.log("HELLO YOu scrolled");
+//             });
+
+
+// // On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+// chart1.on('draw', function(data) {
+//   if(data.type === 'point') {
+//     // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+//     data.element.animate({
+//       opacity: {
+//         // The delay when we like to start the animation
+//         begin: seq++ * 80,
+//         // Duration of the animation
+//         dur: 500,
+//         // The value where the animation should start
+//         from: 0,
+//         // The value where it should end
+//         to: 1
+//       },
+//       x1: {
+//         begin: seq++ * 80,
+//         dur: 500,
+//         from: data.x - 100,
+//         to: data.x,
+//         // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
+//         easing: Chartist.Svg.Easing.easeOutQuint
+//       }
+//     });
+//   }
+
+//     if(data.type === 'line' || data.type === 'area') {
+//     data.element.animate({
+//       d: {
+//         begin: 2000 * data.index,
+//         dur: 2000,
+//         from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+//         to: data.path.clone().stringify(),
+//         easing: Chartist.Svg.Easing.easeOutQuint
+//       }
+//     });
+//   }
+// });
+
+
+var controller1 = new ScrollMagic.Controller();
+var scene1 = new ScrollMagic.Scene({triggerElement: "#chart1trigger", duration: 200, reverse:false})
+          .addTo(controller1)
+          .on('start',function()
+            {
+              console.log("HELLO YOu scrolled");
+                var data = {
+  series: [<%= @sbprecords %>, <%= @dbprecords %>]
+};
+var chart1 = new Chartist.Line('#chart1', data);
+// Let's put a sequence number aside so we can use it in the event callbacks
+var seq = 0;
+
+// Once the chart is fully created we reset the sequence
+chart1.on('created', function() {
+  seq = 0;
+});
+
+chart1.on('draw', function(data) {
+  if(data.type === 'point') {
+    // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+    data.element.animate({
+      opacity: {
+        // The delay when we like to start the animation
+        begin: seq++ * 80,
+        // Duration of the animation
+        dur: 500,
+        // The value where the animation should start
+        from: 0,
+        // The value where it should end
+        to: 1
+      },
+      x1: {
+        begin: seq++ * 80,
+        dur: 500,
+        from: data.x - 100,
+        to: data.x,
+        // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
+        easing: Chartist.Svg.Easing.easeOutQuint
+      }
+    });
+  }
+
+    if(data.type === 'line' || data.type === 'area') {
+    data.element.animate({
+      d: {
+        begin: 2000 * data.index,
+        dur: 2000,
+        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+        to: data.path.clone().stringify(),
+        easing: Chartist.Svg.Easing.easeOutQuint
+      }
+    });
+  }
+});
+
+            });
+
+
+// For the sake of the example we update the chart every time it's created with a delay of 8 seconds
+// chart.on('created', function() {
+//   if(window.__anim0987432598723) {
+//     clearTimeout(window.__anim0987432598723);
+//     window.__anim0987432598723 = null;
+//   }
+//   window.__anim0987432598723 = setTimeout(chart.update.bind(chart), 8000);
+// });
+
+
+
+
+var controller2 = new ScrollMagic.Controller();
+var scene2 = new ScrollMagic.Scene({triggerElement: "#chart2trigger", duration: 200, reverse:false})
+          .addTo(controller1)
+          .on('start',function()
+            {
+              //Weight Records
+
+  var data = {
+  series: [<%= @bmirecords %>]
+};
+var chart2 = new Chartist.Line('#chart2', data);
+// Let's put a sequence number aside so we can use it in the event callbacks
+var seq = 0;
+
+// Once the chart is fully created we reset the sequence
+chart2.on('created', function() {
+  seq = 0;
+});
+// On each drawn element by Chartist we use the Chartist.Svg API to trigger SMIL animations
+chart2.on('draw', function(data) {
+  if(data.type === 'point') {
+    // If the drawn element is a line we do a simple opacity fade in. This could also be achieved using CSS3 animations.
+    data.element.animate({
+      opacity: {
+        // The delay when we like to start the animation
+        begin: seq++ * 80,
+        // Duration of the animation
+        dur: 500,
+        // The value where the animation should start
+        from: 0,
+        // The value where it should end
+        to: 1
+      },
+      x1: {
+        begin: seq++ * 80,
+        dur: 500,
+        from: data.x - 100,
+        to: data.x,
+        // You can specify an easing function name or use easing functions from Chartist.Svg.Easing directly
+        easing: Chartist.Svg.Easing.easeOutQuint
+      }
+    });
+  }
+
+    if(data.type === 'line' || data.type === 'area') {
+    data.element.animate({
+      d: {
+        begin: 2000 * data.index,
+        dur: 2000,
+        from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
+        to: data.path.clone().stringify(),
+        easing: Chartist.Svg.Easing.easeOutQuint
+      }
+    });
+  }
+});
+
+              console.log("HELLO YOu scrolled");
+            });
+
+
+
+
+
+</script>

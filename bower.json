@@ -1,0 +1,11 @@
+{
+  "name": "chronos",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "https://github.com/voonshunzhi/chronos_project",
+  "dependencies": {
+    "chartist": "^0.11.0",
+    "chartist-plugin-tooltip": "^0.0.18"
+  }
+}

@@ -20,6 +20,7 @@ class PatientDashboard < Administrate::BaseDashboard
     points: Field::Number,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
+    identification_card: PticField,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -28,20 +29,20 @@ class PatientDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :id,
     :name,
     :age,
+    :identification_card,
     :height,
     :weight,
     :points,
-    :id,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
-    :user,
-    :doctor,
-    :health_record,
+    :name,
+    :identification_card,
     :id,
     :height,
     :weight,
@@ -67,7 +68,7 @@ class PatientDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how patients are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(patient)
-  #   "Patient ##{patient.id}"
-  # end
+  def display_resource(patient)
+    "#{patient.user.name}"
+  end
 end

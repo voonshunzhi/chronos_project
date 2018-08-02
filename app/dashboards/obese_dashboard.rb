@@ -9,9 +9,10 @@ class ObeseDashboard < Administrate::BaseDashboard
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
     health_record: Field::BelongsTo,
+    patient_name: PtnameField,
     id: Field::Number,
     bmi: Field::Number.with_options(decimals: 2),
-    waist_circumference: Field::Number.with_options(decimals: 2),
+    waist_circumference: Field::Number.with_options(suffix: 'cm'),
     notes: Field::String,
     medication: Field::String,
     created_at: Field::DateTime,
@@ -26,10 +27,11 @@ class ObeseDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
-    :health_record,
-    :id,
+    :patient_name,
+    :medication,
     :bmi,
     :waist_circumference,
+    :updated_at
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
@@ -63,7 +65,8 @@ class ObeseDashboard < Administrate::BaseDashboard
   # Overwrite this method to customize how obeses are displayed
   # across all pages of the admin dashboard.
   #
-  # def display_resource(obese)
-  #   "Obese ##{obese.id}"
-  # end
+  def display_resource(obese)
+     "Weight Record ##{obese.health_record.patient.user.name}"
+    # "Obese ##{obese.id}"
+  end
 end

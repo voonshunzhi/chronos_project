@@ -17,5 +17,10 @@ module Admin
 
     # See https://administrate-prototype.herokuapp.com/customizing_controller_actions
     # for more information
+    def scoped_resource
+      doctor =   current_user.doctor
+      ids = (doctor.patients.collect {|pt| pt.health_record.diabetes.ids}).flatten
+      resource_class.where(id: ids)
+    end
   end
 end
