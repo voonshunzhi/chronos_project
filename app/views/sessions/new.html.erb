@@ -1,4 +1,7 @@
-
+<head>
+<!-- the link to do the animation on scroll thingy -->
+	<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
 <div id="background" style="position:relative;">
 	<% if params[:sign_in] == "true"%>
 		<div class="row">
@@ -48,13 +51,15 @@
 	<%end%>
 </div>
 
+
+<!-- bottom part start here -->
 <div class="session-container" style="width: 100vw;">
 	<div class="row bg-info">
 		<div class="col-md-8 my-5 session-col test1">
 		
 		</div>
 		<div class="col-md-4 my-5 session-col" >
-			<div class="card mt-2" style="width:95%;display:block; margin:auto;">
+			<div class="card mt-2" style="width:95%;display:block; margin:auto;" data-aos="fade-down"  data-aos-duration="1000">
 			  <div class="card-body">
 			    <h5 class="card-title" style="text-align: center;">Chronos</h5>
 			    <h6 class="card-subtitle mb-2 text-muted" >Who are we?</h6>
@@ -62,7 +67,7 @@
 			  </div>
 			</div>
 
-			<div class="card mt-5" style="width:95%; margin:auto;display:block;">
+			<div class="card mt-5" style="width:95%; margin:auto;display:block;"  data-aos="fade-up-right"  data-aos-duration="1000" data-aos-delay="200">
 			  <div class="card-body">
 			    <h5 class="card-title" style="text-align: center;">What are our goals?</h5>
 			    <h6 class="card-subtitle mb-2 text-muted mt-2" style="text-align: center;">To Connect</h6>
@@ -76,30 +81,41 @@
 		</div>
 	</div>
 
-	<div class="row ">
-		<div class="col-md-4 my-5 session-col" >
-			<div class="card text-white bg-info " style="width:95%;display:block; margin:auto;">
+
+
+
+	<div class="row " style="height: 100vh">
+		<div class="col-md-12" style="text-align: center;">
+			<h1> What do we provide?</h1>
+		</div>
+		<div class="col-md-6 my-5 session-col" >
+			<div class="card text-white bg-info " style="width:95%;display:block; margin:auto;"  data-aos="fade-right"  data-aos-duration="1000">
 			  <div class="card-body">
-			    <h5 class="card-title" style="text-align: center;">What do we provide?</h5>
-			    <h6 class="card-subtitle mb-2 text-muted">Complete Views</h6>
-			    <p class="card-text">Providing adminstrators complete views on the users' actions </p>
-			    <h6 class="card-subtitle mb-2 text-muted">Informative Interface</h6>
+			    <h5 class="card-title" style="text-align: center;">Functional and informative interfaces</h5>
+			    <h6 class="card-subtitle mb-2 text-muted">Adminstrators</h6>
+			    <p class="card-text">Simple yet efficient interface for adminstrators to have complete views on all users</p>
+			    <h6 class="card-subtitle mb-2 text-muted">Doctors</h6>
 			    <p class="card-text">Providing doctors with analytical data to help improve services provided towards patients, as well as allowing patients to monitor their health status.</p>
-			    <h6 class="card-subtitle mb-2 text-muted">Gentle Reminders</h6>
-			    <p class="card-text">Providing adminstrators complete views on the users' actions </p>
+			    <h6 class="card-subtitle mb-2 text-muted">Patients</h6>
+			    <p class="card-text">Interactive and fun interface, coupled with exciting gamified system to motivate patients keep an eye on their health records.</p>
 			  </div>
 			</div>
 
-			<div class="card mt-2" style="width:95%;display:block; margin:auto;">
+			
+		</div>
+		<div class="col-md-6 my-5 session-col" >
+			<div class="card text-white bg-info " style="width:95%;display:block; margin:auto;" data-aos="fade-left"  data-aos-duration="1000" data-aos-delay="250">
 			  <div class="card-body">
-			    <h5 class="card-title" style="text-align: center;">Exciting gamification feature!</h5>
+			    <h5 class="card-title" style="text-align: center;">Exciting and motivating gamification features!</h5>
 			    <h6 class="card-subtitle mb-2 text-muted">Points system</h6>
 			    <p class="card-text">Points are provided to patients to increase their health awareness.</p>
 			    <h6 class="card-subtitle mb-2 text-muted">Prizing system</h6>
 			    <p class="card-text">Prizes are able redeemed through points accumulated.</p>
 			  </div>
 			</div>
+
 		</div>
+		<!-- background -->
 		<div class="col-md-8 test2 my-5 session-col " >
 		</div>
 	</div>
@@ -109,10 +125,10 @@
 		
 		</div>
 		<div class="col-md-4 my-5 session-col ">
-			<div class="card" style="width: 95%; margin:auto;display:block; margin-top: 20%">
+			<div class="card" style="width: 95%; margin:auto;display:block; margin-top: 20%" data-aos="fade-left"  data-aos-duration="1000">
 			  <div class="card-body">
 			    <h5 class="card-title" style="text-align: center;">How to use us?</h5>
-			    <h6 class="card-subtitle mb-2 text-black" style="text-align: center;">Get a referal code from your doctor</h6>
+			    <h6 class="card-subtitle mb-2 text-black" style="text-align: center;">Get a reference code from your doctor</h6>
 			    <h6 class="card-subtitle mb-2 text-black" style="text-align: center;">..</h6>
 			    <h6 class="card-subtitle mb-2 text-black" style="text-align: center;">Sign up as a patient from our website</h6>
 			    <h6 class="card-subtitle mb-2 text-black" style="text-align: center;">..</h6>
@@ -127,16 +143,16 @@
 		</div>
 	</div>
 </div>
-<div style="height: 29px">	
-<!-- This is the kotak to push the footer down, and not interfere with the contains above -->
-</div>
-
-<h1>Hello</h1>
-
 
 
 <div style="height: 45px">	
 </div>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
 <script type="text/javascript">
 
 $("#getstarted").typed({
