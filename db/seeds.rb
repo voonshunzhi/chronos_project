@@ -16,29 +16,29 @@ ActiveRecord::Base.transaction do
   user['ic'] = rand(1000000000..999999999999)
   user['gender']=["Male","Female"].sample
   user['email'] = Faker::Internet.email
-  user['role'] = rand(0..1)
+  user['role'] = 0
 
   User.create(user)
 end
 end
 
-doctor = {}
-dids = []
-User.where(role:1).each { |d| dids<<d.id }
+# doctor = {}
+# dids = []
+# User.where(role:1).each { |d| dids<<d.id }
 
-ActiveRecord::Base.transaction do
-    dids.each do |d|
-        doctor['code'] = Faker::Code.unique.nric #=> "S5589083H"
-        doctor['user_id'] = d
-      Doctor.create(doctor)
-    end
-end
+# ActiveRecord::Base.transaction do
+#     dids.each do |d|
+#         doctor['code'] = Faker::Code.unique.nric #=> "S5589083H"
+#         doctor['user_id'] = d
+#       Doctor.create(doctor)
+#     end
+# end
 
-dids=[]
+# dids=[]
 
-Doctor.all.each {|d| dids << d.id}
+# Doctor.all.each {|d| dids << d.id}
 
-patient = {}
+# patient = {}
 pids = []
 
 
@@ -51,7 +51,7 @@ pids.each do |pa|
         patient.height = rand(140..180)
         patient.blood_type = ["Type A", "Type B", "Type O", "Type AB"].sample
         patient.user_id = pa
-        patient.doctor_id = dids.sample
+        patient.doctor_id = 22
         patient.points = rand(0..100)
         patient.save
     end
@@ -63,7 +63,7 @@ Patient.all.each {|pa| pids << pa.id}
 healthrecord = {}
 pids.each do |pa|
     ActiveRecord::Base.transaction do
-        healthrecord['patient_id'] = pa
+        healthrecord['patient_id'] = [17..46]
         HealthRecord.create(healthrecord)
     end
 end
@@ -112,13 +112,13 @@ pids.length.times do
 end
 end
 
-prize = {}
-ActiveRecord::Base.transaction do
-15.times do
-    prize['name']=Faker::Food.dish  
-    prize['description'] = Faker::HowIMetYourMother.quote
-    prize['cost'] = rand(30..50)
-    
-    Prize.create(prize)
-end
-end
+# prize = {}
+# ActiveRecord::Base.transaction do
+#     15.times do
+#         prize['name']=Faker::Food.dish  
+#         prize['description'] = Faker::HowIMetYourMother.quote
+#         prize['cost'] = rand(30..50)
+        
+#         Prize.create(prize)
+#     end
+# end

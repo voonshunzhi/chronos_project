@@ -43,7 +43,6 @@ html,body {
 }
 
 
-
 .session-row{
   width: 100%;
   margin: 2px 40px;
@@ -74,3 +73,17 @@ html,body {
 
 
 
+@media (max-width: 767px) {
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+}
